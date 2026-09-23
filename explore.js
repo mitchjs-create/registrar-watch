@@ -131,6 +131,8 @@ async function explore(browser, site, venue) {
         break;
       }
 
+      let acted = false;
+
       // Tick unticked checkboxes (these are the confirm and accept gates).
       for (const c of s.controls) {
         if (c.type === 'checkbox' && !c.checked && c.id) {
@@ -140,6 +142,7 @@ async function explore(browser, site, venue) {
             .check({ timeout: 5000 })
             .catch(() => {});
           console.log(`  [action] ticked "${c.label || c.id}"`);
+          acted = true;
         }
       }
       // Dropdowns. The venue dropdown gets the configured venue; anything else
@@ -161,6 +164,7 @@ async function explore(browser, site, venue) {
           .selectOption(choice.split('|')[0], { timeout: 5000 })
           .catch(() => {});
         console.log(`  [action] chose "${choice}" in ${c.id}`);
+        acted = true;
         await page.waitForTimeout(3000);
         await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
       }
@@ -177,6 +181,7 @@ async function explore(browser, site, venue) {
         if (pick && pick.id) {
           await page.locator(`[id="${pick.id}"]`).first().check({ timeout: 5000 }).catch(() => {});
           console.log(`  [action] selected radio "${pick.label || pick.id}"`);
+          acted = true;
         }
       }
 
@@ -188,7 +193,11 @@ async function explore(browser, site, venue) {
 
       const next = page.getByRole('button', { name: /next|continue|start|begin/i }).first();
       if (!(await next.count())) {
-        console.log('>>> no Next button found, stopping here');
+        if (acted) {
+          console.log('  [note] no Next button, re-reading the same screen after those actions');
+          continue;
+        }
+        console.log('>>> no Next button and nothing left to do, stopping here');
         break;
       }
       await next.click({ timeout: 10000 }).catch((e) => console.log(`  [warn] next click failed: ${e.message}`));
