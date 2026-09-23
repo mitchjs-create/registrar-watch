@@ -62,10 +62,11 @@ function survey() {
       .filter((el) => el.offsetParent !== null)
       .map((el) => (el.value || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40))
       .filter(Boolean),
-    calendarish:
-      document.querySelectorAll(
+    calendarish: [
+      ...document.querySelectorAll(
         '.sis-datepicker-control, [class*="datepicker" i], [class*="calendar" i], .ui-datepicker, [id*="ChooseTime" i]'
-      ).length > 0,
+      ),
+    ].some((el) => el.offsetParent !== null && !el.closest('script, template')),
     dayCells: [...document.querySelectorAll('td a, .ui-datepicker-calendar td, [class*="slot" i], [class*="timeslot" i]')]
       .filter((el) => el.offsetParent !== null)
       .map((el) => `${el.textContent.trim().slice(0, 30)} [${(el.className || '').slice(0, 40)}]`)
@@ -138,6 +139,22 @@ async function explore(browser, site) {
           await page.waitForTimeout(1500);
         }
       }
+      // Radio gates: prefer the affirmative option, since these are consent or
+      // eligibility questions that must be answered to proceed.
+      const radioGroups = {};
+      for (const c of s.controls) {
+        if (c.type === 'radio' && c.name) (radioGroups[c.name] = radioGroups[c.name] || []).push(c);
+      }
+      for (const [, group] of Object.entries(radioGroups)) {
+        if (group.some((g) => g.checked)) continue;
+        const pick =
+          group.find((g) => /^(yes|i give|i confirm|i agree|i accept)/i.test(g.label.trim())) || group[0];
+        if (pick && pick.id) {
+          await page.locator(`[id="${pick.id}"]`).first().check({ timeout: 5000 }).catch(() => {});
+          console.log(`  [action] selected radio "${pick.label || pick.id}"`);
+        }
+      }
+
       // Free text fields are left alone deliberately.
       const textFields = s.controls.filter((c) => ['text', 'email', 'tel', 'password'].includes(c.type));
       if (textFields.length) {
