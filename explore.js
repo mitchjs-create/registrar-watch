@@ -54,7 +54,7 @@ function survey() {
           className: (el.className || '').slice(0, 80),
           options:
             el.tagName === 'SELECT'
-              ? [...el.options].map((o) => `${o.value}|${o.textContent.trim()}`.slice(0, 80)).slice(0, 25)
+              ? [...el.options].map((o) => `${o.value}|${o.textContent.trim()}`.slice(0, 80)).slice(0, 400)
               : undefined,
         };
       }),
