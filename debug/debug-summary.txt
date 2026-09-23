@@ -1,0 +1,36 @@
+[check] Wandsworth Register Office
+
+=== Wandsworth Register Office ===
+Requests captured: 0
+Date-shaped values by key path:
+DOM candidates: 0
+  failed: page loaded but made no data requests (1 in a row)
+[check] Southwark Register Office
+
+=== Southwark Register Office ===
+Requests captured: 0
+Date-shaped values by key path:
+DOM candidates: 0
+  failed: page loaded but made no data requests (1 in a row)
+[check] Islington Register Office
+
+=== Islington Register Office ===
+Requests captured: 0
+Date-shaped values by key path:
+DOM candidates: 0
+  failed: page loaded but made no data requests (1 in a row)
+[check] Lincolnshire Registration Service
+
+=== Lincolnshire Registration Service ===
+Requests captured: 0
+Date-shaped values by key path:
+DOM candidates: 0
+  failed: page loaded but made no data requests (1 in a row)
+[check] Tower Hamlets Register Office
+
+=== Tower Hamlets Register Office ===
+Requests captured: 0
+Date-shaped values by key path:
+DOM candidates: 0
+  failed: page loaded but made no data requests (1 in a row)
+[check] done
