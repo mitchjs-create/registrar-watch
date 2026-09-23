@@ -108,7 +108,7 @@ async function main() {
       const previous = new Set(prev.slots || []);
       const added = result.slots.filter((s) => !previous.has(s));
       const firstRun = !prev.lastRun;
-      console.log(`    ${result.slots.length} slot(s) visible, ${added.length} new  [${result.view}]`);
+      console.log(`    ${result.slots.length} in-window slot(s), ${added.length} new, ${result.rawCount} slot(s) on the page in total`);
 
       state.venues[id] = {
         slots: result.slots,
