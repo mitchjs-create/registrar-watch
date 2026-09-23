@@ -10,6 +10,7 @@
  *   TELEGRAM_CHAT_ID      your chat id
  *   WEBHOOK_URL           anything that accepts a JSON POST
  *   RESEND_API_KEY        plus EMAIL_TO and EMAIL_FROM, for email
+ *   GMAIL_USER            plus GMAIL_APP_PASSWORD and EMAIL_TO, for Gmail
  */
 
 async function post(url, options, label) {
@@ -81,6 +82,30 @@ async function notify({ title, body, url }) {
         },
         'email'
       )
+    );
+  }
+
+  if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD && process.env.EMAIL_TO) {
+    channels.push(
+      (async () => {
+        try {
+          const nodemailer = require('nodemailer');
+          const transport = nodemailer.createTransport({
+            service: 'gmail',
+            auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD },
+          });
+          await transport.sendMail({
+            from: process.env.GMAIL_USER,
+            to: process.env.EMAIL_TO,
+            subject: title,
+            text: `${body}${url ? `\n\n${url}` : ''}`,
+          });
+          return true;
+        } catch (err) {
+          console.error(`[notify] gmail errored: ${err.message}`);
+          return false;
+        }
+      })()
     );
   }
 
