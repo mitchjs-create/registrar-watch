@@ -1,90 +1,36 @@
 
 ======================================================================
-Wandsworth Register Office :: The Town Hall, Wandsworth High Street - The Elizabeth Room
+Islington Register Office :: Islington Town Hall - Say I Do With Two
 ======================================================================
 
 --- screen 1 ---
-headings: Marriage Ceremony Booking | Introduction | Support links
-  input/checkbox id=68727b12-0797-41a5-ac23-ca06f3200798true checked=false label="I confirm and accept the above"
+headings: Marriage Ceremony Booking | What you will need to book the ceremony | Please read the following before proceeding | Support links
+  input/radio id=56afbe5e-cfcb-4b01-8cda-e2edf274ded6true checked=false label="Yes"
+  input/radio id=56afbe5e-cfcb-4b01-8cda-e2edf274ded6false checked=false label="No"
 buttons: Next | Exit
 calendar matches: script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] ticked "I confirm and accept the above"
+  [action] selected radio "Yes"
 
 --- screen 2 ---
-headings: Marriage Ceremony Booking | How did you first hear about Wandsworth Ceremonies? | Support links
-  select/select-one id=35a7b1bc-9438-47e9-afee-f60fe1fd2d5d checked=false label="How did you first hear about Wandsworth Ceremonies?"
-      options: |Please select ; Wandsworth Ceremonies website|Wandsworth Ceremonies website ; Search engine|Search engine ; Social media|Social media ; Wedding fair|Wedding fair – please specify ; Word of mouth|Word of mouth ; Other|Other – please specify
-buttons: Back | Next | Exit
-calendar matches: script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] chose "Wandsworth Ceremonies website|Wandsworth Ceremonies website" in 35a7b1bc-9438-47e9-afee-f60fe1fd2d5d
+headings: Marriage Ceremony Booking | Venue selection | Support links
+  select/select-one id=ChooseTimeOffice checked=false label="In which venue is your ceremony taking place?"
+      options: |Please select ; 68|18 Clerkenwell Green ; 2|Andaz Liverpool Street ; 53|Banking Hall ; 39|Barbican Centre ; 89|Barts North Wing ; 47|Bellanger ; 77|Bishopsgate Institute ; 88|Bourne & Hollingsworth Buildings ; 87|Canopy By Hilton ; 27|Cinnamon Kitchen ; 83|City of London Club ; 25|City of London Corporation Guildhall ; 9|Devonshire  Terrace ; 65|Fortnum & Mason ; 64|Four Seasons Hotel London at Tower Bridge ; 33|Fredericks' Restaurant ; 57|Gordon Ramsey Bread Street Kitchen & Bar (South Place) ; 24|Haberdashers' Hall ; 30|Honourable Artillery Company ; 1|Horizon 22 Events ; 40|Ironmongers' Hall ; 5|Islington Town Hall - Council Chamber ; 35|Islington Town Hall - Mayor's Parlour ; 48|Islington Town Hall - Richmond Suite ; 4|Islington Town Hall - Room 99 ; 86|Islington Town Hall - Say I Do With Two ; 29|Islington Town Hall - The Angel Suite ; 84|Islington Town Hall - The Canonbury Suite ; 73|Islington Town Hall - The Statutory Room ; 34|Kings Place ; 80|Leonardo Royal Hotel St. Paul's ; 78|Lucky Cat By Gordon Ramsey at 22 Bishopsgate ; 18|Merchant Taylors' Hall ; 52|Montcalm Royal London House ; 15|One Moorgate Place ; 10|Pan Pacific ; 61|Plaisterer's Hall ; 17|Screen On The Green ; 20|Skinners' Hall (8 1/2 London) ; 44|South Place Hotel ; 46|St Bride Foundation ; 37|St. John's Gate which houses the Museum Of The Order Of St John ; 76|The Anthologist ; 6|The Brewery ; 66|The Charterhouse ; 69|The Fable ; 54|The Goldsmiths' Centre ; 55|The Happenstance ; 13|The Honourable Society Of The Inner Temple ; 14|The Honourable Society Of The Middle Temple ; 42|The London Canal Museum ; 59|The Ned ; 62|The Zetter Clerkenwell ; 7|Trinity House ; 81|Wagtail ; 22|Watermen's Hall ; 79|Westin London City ; 23|Worshipful Company Of Stationers And Newspaper Makers (Stationers' Hall)
+buttons: Back | Exit
+calendar matches: select#ChooseTimeOffice.govuk-select visible=true ; script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
+  [action] chose "86|Islington Town Hall - Say I Do With Two" in ChooseTimeOffice
+  [note] no Next button, re-reading the same screen after those actions
 
 --- screen 3 ---
 headings: Marriage Ceremony Booking | Venue selection | Support links
-  select/select-one id=ChooseTimeOffice checked=false label="Where will your ceremony be taking place?"
-      options: |Please select ; 54|art'otel London ; 2|Battersea Arts Centre ; 55|Battersea Power Station - Control Room A ; 4|Grove House ; 16|Le Gothique ; 58|Park Hyatt London River Thames ; 40|Pestana Chelsea Bridge Hotel and Spa ; 21|Roehampton Club ; 49|Tara Theatre ; 25|Thames Rowing Club ; 41|The Bandstand ; 7|The Battersea Barge ; 50|The Bedford Pub ; 47|The Bowling Green ; 6|The Civic Suite ; 36|The County Arms ; 13|The Dukes Head ; 12|The London Rowing Club ; 14|The Pump House Gallery ; 56|The Railway ; 23|The Town Hall, Wandsworth High Street - The Alexandra Room ; 48|The Town Hall, Wandsworth High Street - The Elizabeth Room ; 11|The Town Hall, Wandsworth High Street - The Grand Chamber ; 45|The Town Hall, Wandsworth High Street - The Mayor’s Parlour ; 34|The Town Hall, Wandsworth High Street - The Victoria Room ; 53|The Wheatsheaf ; 20|Winchester House
-buttons: Back | Exit
-calendar matches: select#ChooseTimeOffice.govuk-select visible=true ; script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] chose "48|The Town Hall, Wandsworth High Street - The Elizabeth Room" in ChooseTimeOffice
->>> no Next button found, stopping here
-
-JSON requests seen (0):
-
-======================================================================
-Wandsworth Register Office :: The Town Hall, Wandsworth High Street - The Victoria Room
-======================================================================
-
---- screen 1 ---
-headings: Marriage Ceremony Booking | Introduction | Support links
-  input/checkbox id=c4470290-a8ee-4e6b-85c8-1372525af891true checked=false label="I confirm and accept the above"
-buttons: Next | Exit
-calendar matches: script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] ticked "I confirm and accept the above"
-
---- screen 2 ---
-headings: Marriage Ceremony Booking | How did you first hear about Wandsworth Ceremonies? | Support links
-  select/select-one id=4ad2ffd9-2a79-49e2-9a6c-42c13b63f5e1 checked=false label="How did you first hear about Wandsworth Ceremonies?"
-      options: |Please select ; Wandsworth Ceremonies website|Wandsworth Ceremonies website ; Search engine|Search engine ; Social media|Social media ; Wedding fair|Wedding fair – please specify ; Word of mouth|Word of mouth ; Other|Other – please specify
-buttons: Back | Next | Exit
-calendar matches: script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] chose "Wandsworth Ceremonies website|Wandsworth Ceremonies website" in 4ad2ffd9-2a79-49e2-9a6c-42c13b63f5e1
-
---- screen 3 ---
-headings: Marriage Ceremony Booking | Venue selection | Support links
-  select/select-one id=ChooseTimeOffice checked=false label="Where will your ceremony be taking place?"
-      options: |Please select ; 54|art'otel London ; 2|Battersea Arts Centre ; 55|Battersea Power Station - Control Room A ; 4|Grove House ; 16|Le Gothique ; 58|Park Hyatt London River Thames ; 40|Pestana Chelsea Bridge Hotel and Spa ; 21|Roehampton Club ; 49|Tara Theatre ; 25|Thames Rowing Club ; 41|The Bandstand ; 7|The Battersea Barge ; 50|The Bedford Pub ; 47|The Bowling Green ; 6|The Civic Suite ; 36|The County Arms ; 13|The Dukes Head ; 12|The London Rowing Club ; 14|The Pump House Gallery ; 56|The Railway ; 23|The Town Hall, Wandsworth High Street - The Alexandra Room ; 48|The Town Hall, Wandsworth High Street - The Elizabeth Room ; 11|The Town Hall, Wandsworth High Street - The Grand Chamber ; 45|The Town Hall, Wandsworth High Street - The Mayor’s Parlour ; 34|The Town Hall, Wandsworth High Street - The Victoria Room ; 53|The Wheatsheaf ; 20|Winchester House
-buttons: Back | Exit
-calendar matches: select#ChooseTimeOffice.govuk-select visible=true ; script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] chose "34|The Town Hall, Wandsworth High Street - The Victoria Room" in ChooseTimeOffice
->>> no Next button found, stopping here
-
-JSON requests seen (0):
-
-======================================================================
-Wandsworth Register Office :: The Town Hall, Wandsworth High Street - The Alexandra Room
-======================================================================
-
---- screen 1 ---
-headings: Marriage Ceremony Booking | Introduction | Support links
-  input/checkbox id=b711e344-bc65-494c-92ef-3df45d7b54c4true checked=false label="I confirm and accept the above"
-buttons: Next | Exit
-calendar matches: script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] ticked "I confirm and accept the above"
-
---- screen 2 ---
-headings: Marriage Ceremony Booking | How did you first hear about Wandsworth Ceremonies? | Support links
-  select/select-one id=5d30ee76-37fd-4e77-b68e-ae3bd3c10fa5 checked=false label="How did you first hear about Wandsworth Ceremonies?"
-      options: |Please select ; Wandsworth Ceremonies website|Wandsworth Ceremonies website ; Search engine|Search engine ; Social media|Social media ; Wedding fair|Wedding fair – please specify ; Word of mouth|Word of mouth ; Other|Other – please specify
-buttons: Back | Next | Exit
-calendar matches: script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] chose "Wandsworth Ceremonies website|Wandsworth Ceremonies website" in 5d30ee76-37fd-4e77-b68e-ae3bd3c10fa5
-
---- screen 3 ---
-headings: Marriage Ceremony Booking | Venue selection | Support links
-  select/select-one id=ChooseTimeOffice checked=false label="Where will your ceremony be taking place?"
-      options: |Please select ; 54|art'otel London ; 2|Battersea Arts Centre ; 55|Battersea Power Station - Control Room A ; 4|Grove House ; 16|Le Gothique ; 58|Park Hyatt London River Thames ; 40|Pestana Chelsea Bridge Hotel and Spa ; 21|Roehampton Club ; 49|Tara Theatre ; 25|Thames Rowing Club ; 41|The Bandstand ; 7|The Battersea Barge ; 50|The Bedford Pub ; 47|The Bowling Green ; 6|The Civic Suite ; 36|The County Arms ; 13|The Dukes Head ; 12|The London Rowing Club ; 14|The Pump House Gallery ; 56|The Railway ; 23|The Town Hall, Wandsworth High Street - The Alexandra Room ; 48|The Town Hall, Wandsworth High Street - The Elizabeth Room ; 11|The Town Hall, Wandsworth High Street - The Grand Chamber ; 45|The Town Hall, Wandsworth High Street - The Mayor’s Parlour ; 34|The Town Hall, Wandsworth High Street - The Victoria Room ; 53|The Wheatsheaf ; 20|Winchester House
-buttons: Back | Exit
-calendar matches: select#ChooseTimeOffice.govuk-select visible=true ; script#sis-choosetimeslot-template. visible=false ; script#sis-choosetimecolumn-template. visible=false ; script#sis-choosetime-template. visible=false ; script#sis-publiccitizenshipchoosetime-template. visible=false
-  [action] chose "23|The Town Hall, Wandsworth High Street - The Alexandra Room" in ChooseTimeOffice
->>> no Next button found, stopping here
+  select/select-one id=- checked=false label="Select month"
+      options: 0|Jan ; 1|Feb ; 2|Mar ; 3|Apr ; 4|May ; 5|Jun ; 6|Jul ; 7|Aug ; 8|Sep ; 9|Oct ; 10|Nov ; 11|Dec
+  select/select-one id=- checked=false label="Select year"
+      options: 1920|1920 ; 1921|1921 ; 1922|1922 ; 1923|1923 ; 1924|1924 ; 1925|1925 ; 1926|1926 ; 1927|1927 ; 1928|1928 ; 1929|1929 ; 1930|1930 ; 1931|1931 ; 1932|1932 ; 1933|1933 ; 1934|1934 ; 1935|1935 ; 1936|1936 ; 1937|1937 ; 1938|1938 ; 1939|1939 ; 1940|1940 ; 1941|1941 ; 1942|1942 ; 1943|1943 ; 1944|1944 ; 1945|1945 ; 1946|1946 ; 1947|1947 ; 1948|1948 ; 1949|1949 ; 1950|1950 ; 1951|1951 ; 1952|1952 ; 1953|1953 ; 1954|1954 ; 1955|1955 ; 1956|1956 ; 1957|1957 ; 1958|1958 ; 1959|1959 ; 1960|1960 ; 1961|1961 ; 1962|1962 ; 1963|1963 ; 1964|1964 ; 1965|1965 ; 1966|1966 ; 1967|1967 ; 1968|1968 ; 1969|1969 ; 1970|1970 ; 1971|1971 ; 1972|1972 ; 1973|1973 ; 1974|1974 ; 1975|1975 ; 1976|1976 ; 1977|1977 ; 1978|1978 ; 1979|1979 ; 1980|1980 ; 1981|1981 ; 1982|1982 ; 1983|1983 ; 1984|1984 ; 1985|1985 ; 1986|1986 ; 1987|1987 ; 1988|1988 ; 1989|1989 ; 1990|1990 ; 1991|1991 ; 1992|1992 ; 1993|1993 ; 1994|1994 ; 1995|1995 ; 1996|1996 ; 1997|1997 ; 1998|1998 ; 1999|1999 ; 2000|2000 ; 2001|2001 ; 2002|2002 ; 2003|2003 ; 2004|2004 ; 2005|2005 ; 2006|2006 ; 2007|2007 ; 2008|2008 ; 2009|2009 ; 2010|2010 ; 2011|2011 ; 2012|2012 ; 2013|2013 ; 2014|2014 ; 2015|2015 ; 2016|2016 ; 2017|2017 ; 2018|2018 ; 2019|2019 ; 2020|2020 ; 2021|2021 ; 2022|2022 ; 2023|2023 ; 2024|2024 ; 2025|2025 ; 2026|2026 ; 2027|2027 ; 2028|2028 ; 2029|2029 ; 2030|2030
+  select/select-one id=ChooseTimeOffice checked=false label="In which venue is your ceremony taking place?"
+      options: |Please select ; 68|18 Clerkenwell Green ; 2|Andaz Liverpool Street ; 53|Banking Hall ; 39|Barbican Centre ; 89|Barts North Wing ; 47|Bellanger ; 77|Bishopsgate Institute ; 88|Bourne & Hollingsworth Buildings ; 87|Canopy By Hilton ; 27|Cinnamon Kitchen ; 83|City of London Club ; 25|City of London Corporation Guildhall ; 9|Devonshire  Terrace ; 65|Fortnum & Mason ; 64|Four Seasons Hotel London at Tower Bridge ; 33|Fredericks' Restaurant ; 57|Gordon Ramsey Bread Street Kitchen & Bar (South Place) ; 24|Haberdashers' Hall ; 30|Honourable Artillery Company ; 1|Horizon 22 Events ; 40|Ironmongers' Hall ; 5|Islington Town Hall - Council Chamber ; 35|Islington Town Hall - Mayor's Parlour ; 48|Islington Town Hall - Richmond Suite ; 4|Islington Town Hall - Room 99 ; 86|Islington Town Hall - Say I Do With Two ; 29|Islington Town Hall - The Angel Suite ; 84|Islington Town Hall - The Canonbury Suite ; 73|Islington Town Hall - The Statutory Room ; 34|Kings Place ; 80|Leonardo Royal Hotel St. Paul's ; 78|Lucky Cat By Gordon Ramsey at 22 Bishopsgate ; 18|Merchant Taylors' Hall ; 52|Montcalm Royal London House ; 15|One Moorgate Place ; 10|Pan Pacific ; 61|Plaisterer's Hall ; 17|Screen On The Green ; 20|Skinners' Hall (8 1/2 London) ; 44|South Place Hotel ; 46|St Bride Foundation ; 37|St. John's Gate which houses the Museum Of The Order Of St John ; 76|The Anthologist ; 6|The Brewery ; 66|The Charterhouse ; 69|The Fable ; 54|The Goldsmiths' Centre ; 55|The Happenstance ; 13|The Honourable Society Of The Inner Temple ; 14|The Honourable Society Of The Middle Temple ; 42|The London Canal Museum ; 59|The Ned ; 62|The Zetter Clerkenwell ; 7|Trinity House ; 81|Wagtail ; 22|Watermen's Hall ; 79|Westin London City ; 23|Worshipful Company Of Stationers And Newspaper Makers (Stationers' Hall)
+buttons: Reserve this time | Back | Exit
+calendar matches: div#-.sis-datepicker-template sis-datepicker-d visible=true ; div#ChooseTimeDatePicker.sis-datepicker-control hasDatepicker visible=true ; div#-.ui-datepicker-inline ui-datepicker ui-wi visible=true ; div#-.ui-datepicker-header ui-widget-header ui visible=true ; a#-.ui-datepicker-prev ui-corner-all visible=true ; a#-.ui-datepicker-next ui-corner-all visible=true ; div#-.ui-datepicker-title visible=true ; select#-.ui-datepicker-month visible=true
+  day/slot cells: "28" cls=[ ui-datepicker-other-month ] clickable=true href=# ; "29" cls=[ ui-datepicker-other-month ] clickable=true href=# ; "30" cls=[ ui-datepicker-other-month ] clickable=true href=# ; "31" cls=[ ui-datepicker-other-month ] clickable=true href=# ; "1" cls=[ ] clickable=true href=# ; "2" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "3" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "4" cls=[ ] clickable=true href=# ; "5" cls=[ ] clickable=true href=# ; "6" cls=[ ] clickable=true href=# ; "7" cls=[ ] clickable=true href=# ; "8" cls=[ ] clickable=true href=# ; "9" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "10" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "11" cls=[ ] clickable=true href=# ; "12" cls=[ ] clickable=true href=# ; "13" cls=[  ui-datepicker-current-day] clickable=true href=# ; "14" cls=[ ] clickable=true href=# ; "15" cls=[ ] clickable=true href=# ; "16" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "17" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "18" cls=[ ] clickable=true href=# ; "19" cls=[ ] clickable=true href=# ; "20" cls=[ ] clickable=true href=# ; "21" cls=[ ] clickable=true href=# ; "22" cls=[ ] clickable=true href=# ; "23" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "24" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "25" cls=[ ] clickable=true href=# ; "26" cls=[ ] clickable=true href=# ; "27" cls=[ ] clickable=true href=# ; "28" cls=[ ] clickable=true href=# ; "29" cls=[ ] clickable=true href=# ; "30" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "31" cls=[ ui-datepicker-week-end ] clickable=true href=# ; "Wednesday 13Jan" cls=[sis-ct-date-day p-1 px-3] clickable=false  ; "15:30 (£198.00)" cls=[sis-choosetimeslot-template sis-ct-timeslot sis-ct] clickable=false  ; "Thursday 14Jan" cls=[sis-ct-date-day p-1 px-3] clickable=false  ; "Friday 15Jan" cls=[sis-ct-date-day p-1 px-3] clickable=false  ; "Saturday 16Jan" cls=[sis-ct-date-day p-1 px-3] clickable=false 
+>>> reached a date or time screen, stopping here
 
 JSON requests seen (0):
