@@ -1,0 +1,18 @@
+{
+  "name": "registrar-watch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Watches register office appointment booking pages and alerts when new dates appear",
+  "main": "check.js",
+  "scripts": {
+    "check": "node check.js",
+    "discover": "node check.js --discover",
+    "discover:headed": "node check.js --discover --headed"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
