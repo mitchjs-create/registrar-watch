@@ -62,11 +62,16 @@ function survey() {
       .filter((el) => el.offsetParent !== null)
       .map((el) => (el.value || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40))
       .filter(Boolean),
-    calendarish: [
+    calendarMatches: [
       ...document.querySelectorAll(
         '.sis-datepicker-control, [class*="datepicker" i], [class*="calendar" i], .ui-datepicker, [id*="ChooseTime" i]'
       ),
-    ].some((el) => el.offsetParent !== null && !el.closest('script, template')),
+    ]
+      .map((el) => {
+        const r = el.getBoundingClientRect();
+        return `${el.tagName.toLowerCase()}#${el.id || '-'}.${(el.className || '').toString().slice(0, 40)} visible=${el.offsetParent !== null && r.width > 0 && r.height > 0}`;
+      })
+      .slice(0, 8),
     dayCells: [...document.querySelectorAll('td a, .ui-datepicker-calendar td, [class*="slot" i], [class*="timeslot" i]')]
       .filter((el) => el.offsetParent !== null)
       .map((el) => `${el.textContent.trim().slice(0, 30)} [${(el.className || '').slice(0, 40)}]`)
@@ -107,10 +112,10 @@ async function explore(browser, site) {
         );
       }
       console.log(`buttons: ${s.buttons.join(' | ')}`);
-      console.log(`calendar present: ${s.calendarish}`);
+      console.log(`calendar matches: ${s.calendarMatches.join(' ; ') || '(none)'}`);
       if (s.dayCells.length) console.log(`  day/slot cells: ${s.dayCells.join(' ; ')}`);
 
-      if (s.calendarish || s.dayCells.length) {
+      if (s.dayCells.length) {
         console.log('>>> reached a date or time screen, stopping here');
         break;
       }
