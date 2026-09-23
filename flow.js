@@ -136,11 +136,34 @@ async function advanceToCalendar(page, venue, log = () => {}, maxScreens = 8) {
         if (!match) return { ok: false, error: `venue "${venue}" not offered` };
         choice = match;
       }
-      await page.locator(`[id="${c.id}"]`).selectOption(choice.value, { timeout: 5000 }).catch(() => {});
+      const sel = page.locator(`[id="${c.id}"]`);
+      await sel.selectOption(choice.value, { timeout: 5000 }).catch(() => {});
       log(`chose "${choice.text}"`);
       acted = true;
-      await page.waitForTimeout(3000);
+      await page.waitForTimeout(2000);
       await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+
+      if (isVenue) {
+        // Some deployments re-render this dropdown and drop the selection, so
+        // confirm it stuck and wait for the calendar it should trigger.
+        for (let attempt = 1; attempt <= 3; attempt++) {
+          const current = await sel.inputValue().catch(() => '');
+          if (current !== choice.value) {
+            log(`selection did not stick (attempt ${attempt}), retrying by label`);
+            await sel.selectOption({ label: choice.text }, { timeout: 5000 }).catch(() => {});
+            await page.waitForTimeout(2000);
+          }
+          const appeared = await page
+            .waitForSelector('[class*="sis-ct-timeslot"], .ui-datepicker-inline', { timeout: 12000, state: 'visible' })
+            .then(() => true)
+            .catch(() => false);
+          if (appeared) {
+            log('calendar rendered');
+            break;
+          }
+          if (attempt === 3) log('calendar never rendered for this venue');
+        }
+      }
     }
 
     const next = page.getByRole('button', { name: /^(next|continue|start|begin)$/i }).first();
