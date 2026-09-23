@@ -39,7 +39,7 @@ jobs:
           if [[ "${{ inputs.mode }}" == "explore" ]]; then
             node explore.js $SITE_ARG 2>&1 | tee debug-summary.txt
           else
-            node check.js --discover $SITE_ARG 2>&1 | tee debug-summary.txt
+            node check.js --dry-run $SITE_ARG 2>&1 | tee debug-summary.txt
           fi
         continue-on-error: true
 
