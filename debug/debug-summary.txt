@@ -1,36 +1,74 @@
-[check] Wandsworth Register Office
 
-=== Wandsworth Register Office ===
-Requests captured: 0
-Date-shaped values by key path:
-DOM candidates: 0
-  failed: page loaded but made no data requests (1 in a row)
-[check] Southwark Register Office
+======================================================================
+Wandsworth Register Office
+======================================================================
 
-=== Southwark Register Office ===
-Requests captured: 0
-Date-shaped values by key path:
-DOM candidates: 0
-  failed: page loaded but made no data requests (1 in a row)
-[check] Islington Register Office
+--- screen 1 ---
+headings: Marriage Ceremony Booking | Introduction | Support links
+  input/checkbox id=8e374430-6069-4dff-8c7e-92f6a4d42288true checked=false label="I confirm and accept the above"
+buttons: Next | Exit
+calendar present: true
+>>> reached a date or time screen, stopping here
 
-=== Islington Register Office ===
-Requests captured: 0
-Date-shaped values by key path:
-DOM candidates: 0
-  failed: page loaded but made no data requests (1 in a row)
-[check] Lincolnshire Registration Service
+JSON requests seen (0):
 
-=== Lincolnshire Registration Service ===
-Requests captured: 0
-Date-shaped values by key path:
-DOM candidates: 0
-  failed: page loaded but made no data requests (1 in a row)
-[check] Tower Hamlets Register Office
+======================================================================
+Southwark Register Office
+======================================================================
 
-=== Tower Hamlets Register Office ===
-Requests captured: 0
-Date-shaped values by key path:
-DOM candidates: 0
-  failed: page loaded but made no data requests (1 in a row)
-[check] done
+--- screen 1 ---
+headings: Sitewide search block | Stay informed | Across the borough | Ceremony Booking | Policy | Council | Services | Stay connected
+  input/text id=edit-s checked=false label="Search"
+  input/submit id=edit-submit-localgov-sitewide-search checked=false label=""
+  select/select-one id=bbd-translation checked=false label="Select Language"
+      options: |Select Language ; en|en|English ; en|ar|العربية ; en|bg|Български ; en|zh-CN|简体中文 ; en|zh-TW|繁體中文 ; en|hr|Hrvatski ; en|cs|Čeština‎ ; en|da|Dansk ; en|nl|Nederlands ; en|fi|Suomi ; en|fr|Français ; en|de|Deutsch ; en|el|Ελληνικά ; en|hi|हिन्दी ; en|it|Italiano ; en|ja|日本語 ; en|ko|한국어 ; en|no|Norsk bokmål ; en|pl|Polski ; en|pt|Português ; en|ro|Română ; en|ru|Русский ; en|es|Español ; en|sv|Svenska
+buttons: Search | Menu Close | Next | Exit | Go
+calendar present: true
+>>> reached a date or time screen, stopping here
+
+JSON requests seen (0):
+
+======================================================================
+Islington Register Office
+======================================================================
+
+--- screen 1 ---
+headings: Marriage Ceremony Booking | What you will need to book the ceremony | Please read the following before proceeding | Support links
+  input/radio id=7ed1509a-5e37-4a31-90b3-809ed1d275betrue checked=false label="Yes"
+  input/radio id=7ed1509a-5e37-4a31-90b3-809ed1d275befalse checked=false label="No"
+buttons: Next | Exit
+calendar present: true
+>>> reached a date or time screen, stopping here
+
+JSON requests seen (0):
+
+======================================================================
+Lincolnshire Registration Service
+======================================================================
+
+--- screen 1 ---
+headings: Ceremony Booking | Support links
+buttons: Next | Exit
+calendar present: true
+>>> reached a date or time screen, stopping here
+
+JSON requests seen (0):
+
+======================================================================
+Tower Hamlets Register Office
+======================================================================
+
+--- screen 1 ---
+headings: Ceremony Booking | Support links
+  input/text id=f96af60b-01f8-4055-b03e-575c8b2e2b63 checked=false label="First name (required)"
+  input/text id=3d71fd59-71d1-4d5f-a8be-77fcfc701826 checked=false label="Surname (required)"
+  input/text id=39dadbcd-2135-434e-b05a-162a27c228c4 checked=false label="Email (required)"
+  input/text id=5cbccd2a-d3fe-401f-a31f-789ed1bf126d checked=false label="Mobile (required)"
+  input/checkbox id=928b6904-ce0f-45cd-8f02-396b2f515ef7True checked=false label="Please tick to opt out of receiving a survey."
+  input/radio id=c2f202b1-b2f2-465c-bec1-f96b935f3491true checked=false label="I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
+  input/radio id=c2f202b1-b2f2-465c-bec1-f96b935f3491false checked=false label="I do not give consent."
+buttons: Next | Exit
+calendar present: true
+>>> reached a date or time screen, stopping here
+
+JSON requests seen (0):
