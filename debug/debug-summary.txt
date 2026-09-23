@@ -5,7 +5,7 @@ Wandsworth Register Office
 
 --- screen 1 ---
 headings: Marriage Ceremony Booking | Introduction | Support links
-  input/checkbox id=8e374430-6069-4dff-8c7e-92f6a4d42288true checked=false label="I confirm and accept the above"
+  input/checkbox id=20445f65-55a5-484b-950a-10d983ae116atrue checked=false label="I confirm and accept the above"
 buttons: Next | Exit
 calendar present: true
 >>> reached a date or time screen, stopping here
@@ -34,8 +34,8 @@ Islington Register Office
 
 --- screen 1 ---
 headings: Marriage Ceremony Booking | What you will need to book the ceremony | Please read the following before proceeding | Support links
-  input/radio id=7ed1509a-5e37-4a31-90b3-809ed1d275betrue checked=false label="Yes"
-  input/radio id=7ed1509a-5e37-4a31-90b3-809ed1d275befalse checked=false label="No"
+  input/radio id=116341a8-6c55-44e9-bf61-ced9f58843aatrue checked=false label="Yes"
+  input/radio id=116341a8-6c55-44e9-bf61-ced9f58843aafalse checked=false label="No"
 buttons: Next | Exit
 calendar present: true
 >>> reached a date or time screen, stopping here
@@ -60,13 +60,13 @@ Tower Hamlets Register Office
 
 --- screen 1 ---
 headings: Ceremony Booking | Support links
-  input/text id=f96af60b-01f8-4055-b03e-575c8b2e2b63 checked=false label="First name (required)"
-  input/text id=3d71fd59-71d1-4d5f-a8be-77fcfc701826 checked=false label="Surname (required)"
-  input/text id=39dadbcd-2135-434e-b05a-162a27c228c4 checked=false label="Email (required)"
-  input/text id=5cbccd2a-d3fe-401f-a31f-789ed1bf126d checked=false label="Mobile (required)"
-  input/checkbox id=928b6904-ce0f-45cd-8f02-396b2f515ef7True checked=false label="Please tick to opt out of receiving a survey."
-  input/radio id=c2f202b1-b2f2-465c-bec1-f96b935f3491true checked=false label="I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
-  input/radio id=c2f202b1-b2f2-465c-bec1-f96b935f3491false checked=false label="I do not give consent."
+  input/text id=136689b1-b35e-4472-97de-dc84055dadd9 checked=false label="First name (required)"
+  input/text id=488be234-cca1-4888-8ca8-7a1faa7178cf checked=false label="Surname (required)"
+  input/text id=6465745b-fd36-4986-bd18-3be36d6929d0 checked=false label="Email (required)"
+  input/text id=06c2ab04-6dfe-4e6d-95c9-626ca563a50b checked=false label="Mobile (required)"
+  input/checkbox id=2dcb9a80-2cc7-4198-b7c3-7d58b318cb64True checked=false label="Please tick to opt out of receiving a survey."
+  input/radio id=7c268a79-6058-4357-8052-797ddf55fa68true checked=false label="I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
+  input/radio id=7c268a79-6058-4357-8052-797ddf55fa68false checked=false label="I do not give consent."
 buttons: Next | Exit
 calendar present: true
 >>> reached a date or time screen, stopping here
