@@ -5,8 +5,24 @@ Wandsworth Register Office
 
 --- screen 1 ---
 headings: Marriage Ceremony Booking | Introduction | Support links
-  input/checkbox id=20445f65-55a5-484b-950a-10d983ae116atrue checked=false label="I confirm and accept the above"
+  input/checkbox id=2b18c906-1e73-48ab-832b-1ce5b5f62770true checked=false label="I confirm and accept the above"
 buttons: Next | Exit
+calendar present: false
+  [action] ticked "I confirm and accept the above"
+
+--- screen 2 ---
+headings: Marriage Ceremony Booking | How did you first hear about Wandsworth Ceremonies? | Support links
+  select/select-one id=8da304c4-50a8-4c49-b834-0ca9787482ac checked=false label="How did you first hear about Wandsworth Ceremonies?"
+      options: |Please select ; Wandsworth Ceremonies website|Wandsworth Ceremonies website ; Search engine|Search engine ; Social media|Social media ; Wedding fair|Wedding fair – please specify ; Word of mouth|Word of mouth ; Other|Other – please specify
+buttons: Back | Next | Exit
+calendar present: false
+  [action] chose "Wandsworth Ceremonies website|Wandsworth Ceremonies website" in 8da304c4-50a8-4c49-b834-0ca9787482ac
+
+--- screen 3 ---
+headings: Marriage Ceremony Booking | Venue selection | Support links
+  select/select-one id=ChooseTimeOffice checked=false label="Where will your ceremony be taking place?"
+      options: |Please select ; 54|art'otel London ; 2|Battersea Arts Centre ; 55|Battersea Power Station - Control Room A ; 4|Grove House ; 16|Le Gothique ; 58|Park Hyatt London River Thames ; 40|Pestana Chelsea Bridge Hotel and Spa ; 21|Roehampton Club ; 49|Tara Theatre ; 25|Thames Rowing Club ; 41|The Bandstand ; 7|The Battersea Barge ; 50|The Bedford Pub ; 47|The Bowling Green ; 6|The Civic Suite ; 36|The County Arms ; 13|The Dukes Head ; 12|The London Rowing Club ; 14|The Pump House Gallery ; 56|The Railway ; 23|The Town Hall, Wandsworth High Street - The Alexandra Room ; 48|The Town Hall, Wandsworth High Street - The Elizabeth Room ; 11|The Town Hall, Wandsworth High Street - The Grand Chamber ; 45|The Town Hall, Wandsworth High Street - The Mayor’s Parlour
+buttons: Back | Exit
 calendar present: true
 >>> reached a date or time screen, stopping here
 
@@ -23,6 +39,43 @@ headings: Sitewide search block | Stay informed | Across the borough | Ceremony 
   select/select-one id=bbd-translation checked=false label="Select Language"
       options: |Select Language ; en|en|English ; en|ar|العربية ; en|bg|Български ; en|zh-CN|简体中文 ; en|zh-TW|繁體中文 ; en|hr|Hrvatski ; en|cs|Čeština‎ ; en|da|Dansk ; en|nl|Nederlands ; en|fi|Suomi ; en|fr|Français ; en|de|Deutsch ; en|el|Ελληνικά ; en|hi|हिन्दी ; en|it|Italiano ; en|ja|日本語 ; en|ko|한국어 ; en|no|Norsk bokmål ; en|pl|Polski ; en|pt|Português ; en|ro|Română ; en|ru|Русский ; en|es|Español ; en|sv|Svenska
 buttons: Search | Menu Close | Next | Exit | Go
+calendar present: false
+  [note] 1 free text field(s) not filled: Search
+
+--- screen 2 ---
+headings: Sitewide search block | Stay informed | Across the borough | Ceremony Booking | Policy | Council | Services | Stay connected
+  input/text id=edit-s checked=false label="Search"
+  input/submit id=edit-submit-localgov-sitewide-search checked=false label=""
+  input/radio id=99e8af14-93c0-4437-b217-a2ec8290dcf4Marriage checked=false label="Marriage ceremony"
+  input/radio id=99e8af14-93c0-4437-b217-a2ec8290dcf4Civil checked=false label="Civil partnership ceremony"
+  select/select-one id=bbd-translation checked=false label="Select Language"
+      options: |Select Language ; en|en|English ; en|ar|العربية ; en|bg|Български ; en|zh-CN|简体中文 ; en|zh-TW|繁體中文 ; en|hr|Hrvatski ; en|cs|Čeština‎ ; en|da|Dansk ; en|nl|Nederlands ; en|fi|Suomi ; en|fr|Français ; en|de|Deutsch ; en|el|Ελληνικά ; en|hi|हिन्दी ; en|it|Italiano ; en|ja|日本語 ; en|ko|한국어 ; en|no|Norsk bokmål ; en|pl|Polski ; en|pt|Português ; en|ro|Română ; en|ru|Русский ; en|es|Español ; en|sv|Svenska
+buttons: Search | Menu Close | Back | Next | Exit | Go
+calendar present: false
+  [action] selected radio "Marriage ceremony"
+  [note] 1 free text field(s) not filled: Search
+
+--- screen 3 ---
+headings: Sitewide search block | Stay informed | Across the borough | Ceremony Booking | What you will need to book the ceremony | Please read the following before proceeding: | Policy | Council | Services | Stay connected
+  input/text id=edit-s checked=false label="Search"
+  input/submit id=edit-submit-localgov-sitewide-search checked=false label=""
+  input/checkbox id=54dc6b7b-5146-4d93-a6d6-b35e5ac49455true checked=false label="I/we confirm that we have read and accepted the above terms and conditions for the civil ceremony."
+  select/select-one id=bbd-translation checked=false label="Select Language"
+      options: |Select Language ; en|en|English ; en|ar|العربية ; en|bg|Български ; en|zh-CN|简体中文 ; en|zh-TW|繁體中文 ; en|hr|Hrvatski ; en|cs|Čeština‎ ; en|da|Dansk ; en|nl|Nederlands ; en|fi|Suomi ; en|fr|Français ; en|de|Deutsch ; en|el|Ελληνικά ; en|hi|हिन्दी ; en|it|Italiano ; en|ja|日本語 ; en|ko|한국어 ; en|no|Norsk bokmål ; en|pl|Polski ; en|pt|Português ; en|ro|Română ; en|ru|Русский ; en|es|Español ; en|sv|Svenska
+buttons: Search | Menu Close | Back | Next | Exit | Go
+calendar present: false
+  [action] ticked "I/we confirm that we have read and accepted the above terms and conditions for the civil ceremony."
+  [note] 1 free text field(s) not filled: Search
+
+--- screen 4 ---
+headings: Sitewide search block | Stay informed | Across the borough | Ceremony Booking | Venue selection | Policy | Council | Services | Stay connected
+  input/text id=edit-s checked=false label="Search"
+  input/submit id=edit-submit-localgov-sitewide-search checked=false label=""
+  select/select-one id=ChooseTimeOffice checked=false label="In which Venue would you like to book the ceremony?"
+      options: |Please select ; 27|CAMBERWELL HOUSE ; 16|Southwark District Register Office
+  select/select-one id=bbd-translation checked=false label="Select Language"
+      options: |Select Language ; en|en|English ; en|ar|العربية ; en|bg|Български ; en|zh-CN|简体中文 ; en|zh-TW|繁體中文 ; en|hr|Hrvatski ; en|cs|Čeština‎ ; en|da|Dansk ; en|nl|Nederlands ; en|fi|Suomi ; en|fr|Français ; en|de|Deutsch ; en|el|Ελληνικά ; en|hi|हिन्दी ; en|it|Italiano ; en|ja|日本語 ; en|ko|한국어 ; en|no|Norsk bokmål ; en|pl|Polski ; en|pt|Português ; en|ro|Română ; en|ru|Русский ; en|es|Español ; en|sv|Svenska
+buttons: Search | Menu Close | Back | Exit | Go
 calendar present: true
 >>> reached a date or time screen, stopping here
 
@@ -34,9 +87,17 @@ Islington Register Office
 
 --- screen 1 ---
 headings: Marriage Ceremony Booking | What you will need to book the ceremony | Please read the following before proceeding | Support links
-  input/radio id=116341a8-6c55-44e9-bf61-ced9f58843aatrue checked=false label="Yes"
-  input/radio id=116341a8-6c55-44e9-bf61-ced9f58843aafalse checked=false label="No"
+  input/radio id=bda63164-139a-40cf-9bab-4f9a12ca1bactrue checked=false label="Yes"
+  input/radio id=bda63164-139a-40cf-9bab-4f9a12ca1bacfalse checked=false label="No"
 buttons: Next | Exit
+calendar present: false
+  [action] selected radio "Yes"
+
+--- screen 2 ---
+headings: Marriage Ceremony Booking | Venue selection | Support links
+  select/select-one id=ChooseTimeOffice checked=false label="In which venue is your ceremony taking place?"
+      options: |Please select ; 68|18 Clerkenwell Green ; 2|Andaz Liverpool Street ; 53|Banking Hall ; 39|Barbican Centre ; 89|Barts North Wing ; 47|Bellanger ; 77|Bishopsgate Institute ; 88|Bourne & Hollingsworth Buildings ; 87|Canopy By Hilton ; 27|Cinnamon Kitchen ; 83|City of London Club ; 25|City of London Corporation Guildhall ; 9|Devonshire  Terrace ; 65|Fortnum & Mason ; 64|Four Seasons Hotel London at Tower Bridge ; 33|Fredericks' Restaurant ; 57|Gordon Ramsey Bread Street Kitchen & Bar (South Place) ; 24|Haberdashers' Hall ; 30|Honourable Artillery Company ; 1|Horizon 22 Events ; 40|Ironmongers' Hall ; 5|Islington Town Hall - Council Chamber ; 35|Islington Town Hall - Mayor's Parlour ; 48|Islington Town Hall - Richmond Suite
+buttons: Back | Exit
 calendar present: true
 >>> reached a date or time screen, stopping here
 
@@ -49,6 +110,20 @@ Lincolnshire Registration Service
 --- screen 1 ---
 headings: Ceremony Booking | Support links
 buttons: Next | Exit
+calendar present: false
+
+--- screen 2 ---
+headings: Ceremony Booking | Terms and Conditions | Support links
+  input/checkbox id=7455e6fa-871c-4891-90ca-82961769df12true checked=false label="I confirm that I have read, understand and agree to be bound by the Terms and Conditions."
+buttons: Back | Next | Exit
+calendar present: false
+  [action] ticked "I confirm that I have read, understand and agree to be bound by the Terms and Conditions."
+
+--- screen 3 ---
+headings: Ceremony Booking | Venue selection | Support links
+  select/select-one id=ChooseTimeOffice checked=false label="Which venue do you wish to book for your ceremony?"
+      options: |Please select ; 59|The Usher Gallery (80) ; 7|Boston Registration Office - The Council Chamber (50) ; 13|Gainsborough Richmond House (42) ; 25|Grantham Registration Office - Totemic House (50) ; 34|Horncastle Registration Office - Holmeleigh (25) ; 163|Lincoln Register Office - The Newport Room (10) ; 162|Lincoln Register Office - The Witham Suite (60) ; 96|Long Sutton Registration Office - The Trafalgar Suite (25) ; 66|Louth Town Hall - The William Wilson Suite (40) ; 78|Skegness Registration Office - The Handsley Room (25) ; 87|Sleaford Registration Office - The Council Chamber (50) ; 98|Spalding Registration Office - The Tulip Room (50) ; 112|Stamford Registration Office - The New Welland Room (50) ; 153|Boston Registration Office (You Plus Two Ceremony) ; 152|Grantham Registration Office (You Plus Two Ceremony) ; 165|Lincoln Register Office (You Plus Two Ceremony) ; 1|Abbey Farm, Woodhall Spa ; 2|Admiral Rodney Hotel, Horncastle ; 3|Alford Manor House ; 183|All Saints at Oxcombe ; 20|Allington Manor ; 8|Appletree Holiday Park, Hubberts Bridge ; 82|Aswarby Rectory ; 92|Ayscoughfee Hall Museum, Spalding
+buttons: Back | Exit
 calendar present: true
 >>> reached a date or time screen, stopping here
 
@@ -60,15 +135,31 @@ Tower Hamlets Register Office
 
 --- screen 1 ---
 headings: Ceremony Booking | Support links
-  input/text id=136689b1-b35e-4472-97de-dc84055dadd9 checked=false label="First name (required)"
-  input/text id=488be234-cca1-4888-8ca8-7a1faa7178cf checked=false label="Surname (required)"
-  input/text id=6465745b-fd36-4986-bd18-3be36d6929d0 checked=false label="Email (required)"
-  input/text id=06c2ab04-6dfe-4e6d-95c9-626ca563a50b checked=false label="Mobile (required)"
-  input/checkbox id=2dcb9a80-2cc7-4198-b7c3-7d58b318cb64True checked=false label="Please tick to opt out of receiving a survey."
-  input/radio id=7c268a79-6058-4357-8052-797ddf55fa68true checked=false label="I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
-  input/radio id=7c268a79-6058-4357-8052-797ddf55fa68false checked=false label="I do not give consent."
+  input/text id=938518a8-5da1-4522-92ab-b2b92277710f checked=false label="First name (required)"
+  input/text id=9166d6a0-5df3-4509-aebd-e5f6a8f8b54b checked=false label="Surname (required)"
+  input/text id=eaeffee5-c7b2-4dd0-98d4-b18477261d54 checked=false label="Email (required)"
+  input/text id=f615182d-2df6-41c6-99ac-46200600f29e checked=false label="Mobile (required)"
+  input/checkbox id=09c9fcd7-55d8-415c-942f-1fc5c1174f55True checked=false label="Please tick to opt out of receiving a survey."
+  input/radio id=2a1bb101-5d58-4917-a329-e2343ef6fbbctrue checked=false label="I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
+  input/radio id=2a1bb101-5d58-4917-a329-e2343ef6fbbcfalse checked=false label="I do not give consent."
 buttons: Next | Exit
-calendar present: true
->>> reached a date or time screen, stopping here
+calendar present: false
+  [action] ticked "Please tick to opt out of receiving a survey."
+  [action] selected radio "I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
+  [note] 4 free text field(s) not filled: First name (required) ; Surname (required) ; Email (required) ; Mobile (required)
+
+--- screen 2 ---
+headings: Ceremony Booking | Support links
+ERRORS: Please enter your first name.
+  input/text id=938518a8-5da1-4522-92ab-b2b92277710f checked=false label="First name (required)"
+  input/text id=9166d6a0-5df3-4509-aebd-e5f6a8f8b54b checked=false label="Surname (required)"
+  input/text id=eaeffee5-c7b2-4dd0-98d4-b18477261d54 checked=false label="Email (required)"
+  input/text id=f615182d-2df6-41c6-99ac-46200600f29e checked=false label="Mobile (required)"
+  input/checkbox id=09c9fcd7-55d8-415c-942f-1fc5c1174f55True checked=true label="Please tick to opt out of receiving a survey."
+  input/radio id=2a1bb101-5d58-4917-a329-e2343ef6fbbctrue checked=true label="I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
+  input/radio id=2a1bb101-5d58-4917-a329-e2343ef6fbbcfalse checked=false label="I do not give consent."
+buttons: Next | Exit
+calendar present: false
+>>> validation blocked us, stopping here
 
 JSON requests seen (0):
