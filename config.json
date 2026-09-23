@@ -1,7 +1,7 @@
 {
   "settings": {
     "windowStart": null,
-    "windowEnd": null,
+    "windowEnd": "2026-11-06",
     "notifyOnFirstRun": true,
     "failuresBeforeAlert": 3,
     "perSiteTimeoutMs": 120000
