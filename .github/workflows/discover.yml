@@ -1,0 +1,53 @@
+name: Discover booking flows
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: "Site key to inspect, or 'all'"
+        required: true
+        default: "all"
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run discovery
+        run: |
+          if [[ "${{ inputs.site }}" == "all" ]]; then
+            node check.js --discover 2>&1 | tee debug-summary.txt
+          else
+            node check.js --discover --site=${{ inputs.site }} 2>&1 | tee debug-summary.txt
+          fi
+        continue-on-error: true
+
+      - name: Commit findings
+        run: |
+          mkdir -p debug
+          mv -f debug-summary.txt debug/ 2>/dev/null || true
+          git config user.name "registrar-watch"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A debug state.json 2>/dev/null || true
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git commit -m "Discovery run: ${{ inputs.site }}"
+            git pull --rebase --autostash
+            git push
+          else
+            echo "Nothing captured"
+          fi
