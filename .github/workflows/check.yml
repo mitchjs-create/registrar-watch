@@ -45,13 +45,17 @@ jobs:
 
       - name: Save state
         run: |
-          if [[ -n "$(git status --porcelain state.json)" ]]; then
-            git config user.name "registrar-watch"
-            git config user.email "actions@users.noreply.github.com"
-            git add state.json
-            git commit -m "State update $(date -u '+%Y-%m-%d %H:%M UTC')"
-            git pull --rebase --autostash
-            git push
+          mkdir -p debug 2>/dev/null || true
+          mv -f debug-summary.txt debug/ 2>/dev/null || true
+          git config user.name "registrar-watch"
+          git config user.email "actions@users.noreply.github.com"
+          git fetch -q origin main
+          git reset -q --soft origin/main
+          git add -A state.json 2>/dev/null || true
+          if [[ -n "$(git diff --cached --name-only)" ]]; then
+            git commit -qm "Run output $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push -q origin HEAD:main
+            echo "committed"
           else
-            echo "No change"
+            echo "nothing to commit"
           fi
