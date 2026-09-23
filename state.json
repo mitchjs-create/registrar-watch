@@ -30,5 +30,63 @@
       "lastError": "page loaded but made no data requests",
       "lastRun": "2026-09-23T21:11:50.391Z"
     }
+  },
+  "venues": {
+    "wandsworth::The Town Hall, Wandsworth High Street - The Elizabeth Room": {
+      "slots": [],
+      "failures": 0,
+      "lastRun": "2026-09-23T23:45:05.310Z",
+      "lastChange": null
+    },
+    "wandsworth::The Town Hall, Wandsworth High Street - The Victoria Room": {
+      "slots": [],
+      "failures": 0,
+      "lastRun": "2026-09-23T23:45:26.643Z",
+      "lastChange": null
+    },
+    "wandsworth::The Town Hall, Wandsworth High Street - The Alexandra Room": {
+      "slots": [],
+      "failures": 0,
+      "lastRun": "2026-09-23T23:45:46.999Z",
+      "lastChange": null
+    },
+    "southwark::Southwark District Register Office": {
+      "slots": [],
+      "failures": 0,
+      "lastRun": "2026-09-23T23:46:05.931Z",
+      "lastChange": null
+    },
+    "southwark::CAMBERWELL HOUSE": {
+      "slots": [
+        "2026-10-30 10:00"
+      ],
+      "failures": 0,
+      "lastRun": "2026-09-23T23:46:24.742Z",
+      "lastChange": "2026-09-23T23:46:24.742Z"
+    },
+    "islington::Islington Town Hall - Say I Do With Two": {
+      "slots": [],
+      "failures": 1,
+      "lastError": "no way forward from this screen",
+      "lastRun": "2026-09-23T23:46:35.557Z"
+    },
+    "lincolnshire::Boston Registration Office (You Plus Two Ceremony)": {
+      "slots": [],
+      "failures": 1,
+      "lastError": "no way forward from this screen",
+      "lastRun": "2026-09-23T23:46:57.760Z"
+    },
+    "lincolnshire::Grantham Registration Office (You Plus Two Ceremony)": {
+      "slots": [],
+      "failures": 1,
+      "lastError": "no way forward from this screen",
+      "lastRun": "2026-09-23T23:47:09.573Z"
+    },
+    "lincolnshire::Lincoln Register Office (You Plus Two Ceremony)": {
+      "slots": [],
+      "failures": 0,
+      "lastRun": "2026-09-23T23:47:27.741Z",
+      "lastChange": null
+    }
   }
 }
