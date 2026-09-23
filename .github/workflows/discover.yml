@@ -7,6 +7,10 @@ on:
         description: "Site key to inspect, or 'all'"
         required: true
         default: "all"
+      mode:
+        description: "explore (walk the flow) or capture (first screen only)"
+        required: true
+        default: "explore"
 
 permissions:
   contents: write
@@ -30,10 +34,12 @@ jobs:
 
       - name: Run discovery
         run: |
-          if [[ "${{ inputs.site }}" == "all" ]]; then
-            node check.js --discover 2>&1 | tee debug-summary.txt
+          SITE_ARG=""
+          if [[ "${{ inputs.site }}" != "all" ]]; then SITE_ARG="--site=${{ inputs.site }}"; fi
+          if [[ "${{ inputs.mode }}" == "explore" ]]; then
+            node explore.js $SITE_ARG 2>&1 | tee debug-summary.txt
           else
-            node check.js --discover --site=${{ inputs.site }} 2>&1 | tee debug-summary.txt
+            node check.js --discover $SITE_ARG 2>&1 | tee debug-summary.txt
           fi
         continue-on-error: true
 
