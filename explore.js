@@ -72,14 +72,21 @@ function survey() {
         return `${el.tagName.toLowerCase()}#${el.id || '-'}.${(el.className || '').toString().slice(0, 40)} visible=${el.offsetParent !== null && r.width > 0 && r.height > 0}`;
       })
       .slice(0, 8),
-    dayCells: [...document.querySelectorAll('td a, .ui-datepicker-calendar td, [class*="slot" i], [class*="timeslot" i]')]
+    dayCells: [...document.querySelectorAll('td, [class*="slot" i], [class*="timeslot" i], [class*="day" i]')]
+      .filter((el) => el.offsetParent !== null && el.textContent.trim().length < 30)
+      .map((el) => {
+        const a = el.querySelector('a, button');
+        return `"${el.textContent.trim().slice(0, 24)}" cls=[${(el.className || '').toString().slice(0, 50)}] clickable=${!!a} ${a ? 'href=' + (a.getAttribute('href') || '').slice(0, 30) : ''}`;
+      })
+      .slice(0, 60),
+    monthHeaders: [...document.querySelectorAll('[class*="month" i], [class*="title" i], caption, h3')]
       .filter((el) => el.offsetParent !== null)
-      .map((el) => `${el.textContent.trim().slice(0, 30)} [${(el.className || '').slice(0, 40)}]`)
-      .slice(0, 30),
+      .map((el) => el.textContent.trim().replace(/\s+/g, ' ').slice(0, 60))
+      .slice(0, 8),
   };
 }
 
-async function explore(browser, site) {
+async function explore(browser, site, venue) {
   const context = await browser.newContext({ userAgent: UA, locale: 'en-GB', timezoneId: 'Europe/London' });
   const page = await context.newPage();
   const requests = [];
@@ -93,7 +100,7 @@ async function explore(browser, site) {
     } catch {}
   });
 
-  console.log(`\n${'='.repeat(70)}\n${site.name}\n${'='.repeat(70)}`);
+  console.log(`\n${'='.repeat(70)}\n${site.name}${venue ? ' :: ' + venue : ''}\n${'='.repeat(70)}`);
 
   try {
     await page.goto(site.url, { waitUntil: 'domcontentloaded', timeout: 45000 });
@@ -135,14 +142,27 @@ async function explore(browser, site) {
           console.log(`  [action] ticked "${c.label || c.id}"`);
         }
       }
-      // Pick the first real option in any untouched dropdown.
+      // Dropdowns. The venue dropdown gets the configured venue; anything else
+      // gets its first real option so we can keep moving.
       for (const c of s.controls) {
-        if (c.tag === 'select' && c.options && c.options.length > 1 && !c.value) {
-          const first = c.options[1].split('|')[0];
-          await page.locator(`[id="${c.id}"]`).selectOption(first, { timeout: 5000 }).catch(() => {});
-          console.log(`  [action] chose "${c.options[1]}" in ${c.id}`);
-          await page.waitForTimeout(1500);
+        if (c.tag !== 'select' || !c.options || c.options.length < 2 || c.value) continue;
+        const isVenue = /ChooseTimeOffice/i.test(c.id) || /venue/i.test(c.label);
+        let choice = c.options[1];
+        if (isVenue && venue) {
+          const match = c.options.find((o) => o.split('|').slice(1).join('|').trim() === venue);
+          if (!match) {
+            console.log(`  [warn] venue "${venue}" not in dropdown, stopping`);
+            return;
+          }
+          choice = match;
         }
+        await page
+          .locator(`[id="${c.id}"]`)
+          .selectOption(choice.split('|')[0], { timeout: 5000 })
+          .catch(() => {});
+        console.log(`  [action] chose "${choice}" in ${c.id}`);
+        await page.waitForTimeout(3000);
+        await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
       }
       // Radio gates: prefer the affirmative option, since these are consent or
       // eligibility questions that must be answered to proceed.
@@ -187,15 +207,18 @@ async function explore(browser, site) {
 
   fs.mkdirSync(path.join(ROOT, 'debug'), { recursive: true });
   await page
-    .screenshot({ path: path.join(ROOT, 'debug', `${site.key}-explore.png`), fullPage: true })
+    .screenshot({ path: path.join(ROOT, 'debug', `${site.key}-${(venue || 'default').replace(/[^a-z0-9]+/gi, '-').slice(0, 40)}.png`), fullPage: true })
     .catch(() => {});
   await context.close();
 }
 
 (async () => {
   const browser = await chromium.launch({ headless: true });
-  for (const site of config.sites.filter((s) => !siteArg || s.key === siteArg)) {
-    await explore(browser, site);
+  for (const site of config.sites.filter((s) => (!siteArg || s.key === siteArg) && s.enabled !== false)) {
+    const venues = site.venues && site.venues.length ? site.venues : [null];
+    for (const venue of venues) {
+      await explore(browser, site, venue);
+    }
   }
   await browser.close();
 })();

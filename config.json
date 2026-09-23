@@ -12,41 +12,56 @@
       "name": "Wandsworth Register Office",
       "url": "https://registrars.wandsworth.gov.uk/Agenda/NewOnlineBookings/appointment.html?pg=6b9156c5-557c-40a1-a9ef-a2e9ba5fe25f",
       "steps": [],
-      "venueFilter": [],
-      "enabled": true
+      "enabled": true,
+      "venues": [
+        "The Town Hall, Wandsworth High Street - The Elizabeth Room",
+        "The Town Hall, Wandsworth High Street - The Victoria Room",
+        "The Town Hall, Wandsworth High Street - The Alexandra Room"
+      ]
     },
     {
       "key": "southwark",
       "name": "Southwark Register Office",
       "url": "https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5",
       "steps": [],
-      "venueFilter": [],
-      "enabled": true
+      "enabled": true,
+      "venues": [
+        "Southwark District Register Office",
+        "CAMBERWELL HOUSE"
+      ]
     },
     {
       "key": "islington",
       "name": "Islington Register Office",
       "url": "https://islington.sishost.co.uk/Agenda/TelephoneRegistration/appointment.html?pg=19c30ce9-21ed-477d-a8f0-7652f5e20ef5",
       "steps": [],
-      "venueFilter": [],
-      "enabled": true
+      "enabled": true,
+      "venues": [
+        "Islington Town Hall - Say I Do With Two"
+      ]
     },
     {
       "key": "lincolnshire",
       "name": "Lincolnshire Registration Service",
       "url": "https://lincolnshire.sishost.co.uk/Agenda/OnlineBookings/appointment.html?pg=dbfefeab-a6b8-41c9-bb8a-a3a44006188b",
       "steps": [],
-      "venueFilter": [],
-      "note": "Only some venues are relevant. Put the venue names you care about in venueFilter once we know how they are labelled.",
-      "enabled": true
+      "enabled": true,
+      "venues": [
+        "Boston Registration Office (You Plus Two Ceremony)",
+        "Grantham Registration Office (You Plus Two Ceremony)",
+        "Lincoln Register Office (You Plus Two Ceremony)"
+      ]
     },
     {
       "key": "towerhamlets",
       "name": "Tower Hamlets Register Office",
       "url": "https://registrar.towerhamlets.gov.uk/Agenda/OnlineBookings/appointment.html?pg=d9b8e6dc-a073-42d8-ad2e-608b7295297f",
       "steps": [],
-      "venueFilter": [],
-      "enabled": true
+      "enabled": false,
+      "venues": [
+        "Tower Hamlets Register Office"
+      ],
+      "note": "Asks for first name, surname, email and mobile before showing anything. Needs details supplied via secrets before it can be enabled."
     }
   ]
 }
