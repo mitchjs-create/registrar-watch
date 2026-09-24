@@ -1,3 +1,53 @@
+[check] Wandsworth Register Office / The Town Hall, Wandsworth High Street - The Elizabeth Room
+    ticked "I confirm and accept the above"
+    chose "Wandsworth Ceremonies website"
+    chose "The Town Hall, Wandsworth High Street - The Elizabeth Room"
+    calendar rendered
+    0 in-window slot(s), 0 new, 6 slot(s) on the page in total
+[check] Wandsworth Register Office / The Town Hall, Wandsworth High Street - The Victoria Room
+    ticked "I confirm and accept the above"
+    chose "Wandsworth Ceremonies website"
+    chose "The Town Hall, Wandsworth High Street - The Victoria Room"
+    calendar rendered
+    0 in-window slot(s), 0 new, 10 slot(s) on the page in total
+[check] Wandsworth Register Office / The Town Hall, Wandsworth High Street - The Alexandra Room
+    ticked "I confirm and accept the above"
+    chose "Wandsworth Ceremonies website"
+    chose "The Town Hall, Wandsworth High Street - The Alexandra Room"
+    calendar rendered
+    0 in-window slot(s), 0 new, 4 slot(s) on the page in total
+[check] Southwark Register Office / Southwark District Register Office
+    selected "Marriage ceremony"
+    ticked "I/we confirm that we have read and accepted the above terms and conditions for the civil ceremony."
+    chose "Southwark District Register Office"
+    calendar rendered
+    0 in-window slot(s), 0 new, 1 slot(s) on the page in total
+[check] Southwark Register Office / CAMBERWELL HOUSE
+    selected "Marriage ceremony"
+    ticked "I/we confirm that we have read and accepted the above terms and conditions for the civil ceremony."
+    chose "CAMBERWELL HOUSE"
+    calendar rendered
+    1 in-window slot(s), 0 new, 1 slot(s) on the page in total
+[check] Islington Register Office / Islington Town Hall - Say I Do With Two
+    selected "Yes"
+    chose "Islington Town Hall - Say I Do With Two"
+    calendar rendered
+    0 in-window slot(s), 0 new, 3 slot(s) on the page in total
+[check] Lincolnshire Registration Service / Boston Registration Office (You Plus Two Ceremony)
+    ticked "I confirm that I have read, understand and agree to be bound by the Terms and Conditions."
+    chose "Boston Registration Office (You Plus Two Ceremony)"
+    calendar rendered
+    0 in-window slot(s), 0 new, 4 slot(s) on the page in total
+[check] Lincolnshire Registration Service / Grantham Registration Office (You Plus Two Ceremony)
+    ticked "I confirm that I have read, understand and agree to be bound by the Terms and Conditions."
+    chose "Grantham Registration Office (You Plus Two Ceremony)"
+    calendar rendered
+    0 in-window slot(s), 0 new, 4 slot(s) on the page in total
+[check] Lincolnshire Registration Service / Lincoln Register Office (You Plus Two Ceremony)
+    ticked "I confirm that I have read, understand and agree to be bound by the Terms and Conditions."
+    chose "Lincoln Register Office (You Plus Two Ceremony)"
+    calendar rendered
+    0 in-window slot(s), 0 new, 2 slot(s) on the page in total
 [check] Tower Hamlets Register Office / Tower Hamlets Register Office
     selected "I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
     filled "First name (required)"
@@ -6,5 +56,14 @@
     filled "Mobile (required)"
     selected "Yes"
     selected "Marriage ceremony"
-    failed: sel is not defined (1 in a row)
+    chose "Tower Hamlets Register Office"
+    venue accepted, Next available
+    [stuck] headings: Ceremony Booking | Venue selection | Support links
+    [stuck] errors: none
+    [stuck] buttons: Back | Exit
+    failed: no way forward from this screen (1 in a row)
+[check] Camden Register Office / Camden Register Office
+    chose "Camden Register Office"
+    calendar rendered
+    0 in-window slot(s), 0 new, 2 slot(s) on the page in total
 [check] done
