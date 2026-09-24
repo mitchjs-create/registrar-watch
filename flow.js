@@ -200,7 +200,26 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
     }
     await next.click({ timeout: 10000 }).catch(() => {});
     await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
-    await page.waitForTimeout(2500);
+    await page.waitForTimeout(2000);
+
+    // Wait for the next screen to actually draw. Some councils sit on a
+    // spinner for the best part of a minute after each step.
+    const deadline = Date.now() + 60000;
+    while (Date.now() < deadline) {
+      const ready = await page.evaluate(() => {
+        const vis = (el) => el && el.offsetParent !== null;
+        const cal = [...document.querySelectorAll('[class*="sis-ct-timeslot"], .ui-datepicker-inline')].some(vis);
+        const controls = [...document.querySelectorAll('input, select')].some(
+          (el) => vis(el) && el.type !== 'hidden'
+        );
+        const buttons = [...document.querySelectorAll('button, input[type=submit]')].some(
+          (el) => vis(el) && /^(next|continue)$/i.test((el.value || el.textContent || '').trim())
+        );
+        return cal || controls || buttons;
+      });
+      if (ready) break;
+      await page.waitForTimeout(2000);
+    }
   }
   return { ok: false, error: 'ran out of screens before reaching a calendar' };
 }
