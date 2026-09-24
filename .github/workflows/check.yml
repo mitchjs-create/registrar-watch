@@ -2,10 +2,11 @@ name: Check registrar availability
 
 on:
   schedule:
-    # Every 5 minutes between 06:00 and 21:00 UTC. Five minutes is the finest
-    # granularity GitHub allows, and it queues scheduled jobs, so late runs are
-    # normal. Overnight is skipped because nothing is released then.
-    - cron: "*/5 6-21 * * *"
+    # Every 5 minutes, 05:00 to 21:59 UTC. Cron has no timezone, so during
+    # British Summer Time that is 06:00 to 22:59 local, and after the clocks go
+    # back on 25 October it is 05:00 to 21:59 local. Five minutes is the finest
+    # granularity GitHub allows and scheduled runs are often queued late.
+    - cron: "*/5 5-21 * * *"
   workflow_dispatch:
 
 concurrency:

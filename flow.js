@@ -147,7 +147,7 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
         // Confirm the selection stuck, then wait for whichever comes next: some
         // councils render the calendar in place, others show a Next button that
         // leads to it. Either counts as progress.
-        for (let attempt = 1; attempt <= 3; attempt++) {
+        for (let attempt = 1; attempt <= 2; attempt++) {
           const current = await sel.inputValue().catch(() => '');
           if (current !== choice.value) {
             log(`selection did not stick (attempt ${attempt}), retrying by label`);
@@ -155,7 +155,7 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
             await page.waitForTimeout(2000);
           }
           let outcome = null;
-          const deadline = Date.now() + 40000;
+          const deadline = Date.now() + 25000;
           while (Date.now() < deadline && !outcome) {
             const state = await page.evaluate(() => {
               const vis = (el) => el && el.offsetParent !== null;
@@ -204,7 +204,7 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
 
     // Wait for the next screen to actually draw. Some councils sit on a
     // spinner for the best part of a minute after each step.
-    const deadline = Date.now() + 60000;
+    const deadline = Date.now() + 25000;
     while (Date.now() < deadline) {
       const ready = await page.evaluate(() => {
         const vis = (el) => el && el.offsetParent !== null;

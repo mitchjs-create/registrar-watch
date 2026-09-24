@@ -96,7 +96,7 @@ async function notify({ title, body, url }) {
           });
           await transport.sendMail({
             from: process.env.GMAIL_USER,
-            to: process.env.EMAIL_TO,
+            to: process.env.EMAIL_TO.split(',').map((s) => s.trim()).filter(Boolean).join(', '),
             subject: title,
             text: `${body}${url ? `\n\n${url}` : ''}`,
           });
