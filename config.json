@@ -63,6 +63,16 @@
       ],
       "note": "Asks for name, email and mobile before showing a calendar. Uses TH_* secrets, or a plus alias on GMAIL_USER.",
       "requiresDetails": true
+    },
+    {
+      "key": "camden",
+      "name": "Camden Register Office",
+      "url": "https://camden.sishost.co.uk/Agenda/TelephoneRegistration/Appointment.html?pg=06edd7c1-1597-4311-aeb9-2a7b52ad21db",
+      "steps": [],
+      "enabled": true,
+      "venues": [
+        "Camden Register Office"
+      ]
     }
   ]
 }

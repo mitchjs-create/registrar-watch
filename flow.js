@@ -132,20 +132,9 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
       const isVenue = /ChooseTimeOffice/i.test(c.id) || /venue|taking place/i.test(c.label);
       let choice = c.options[1];
       if (isVenue) {
-        const match = c.options.find((o) => o.text === venue);
-        if (!match) return { ok: false, error: `venue "${venue}" not offered` };
-        choice = match;
-      }
-      const sel = page.locator(`[id="${c.id}"]`);
-      await sel.selectOption(choice.value, { timeout: 5000 }).catch(() => {});
-      log(`chose "${choice.text}"`);
-      acted = true;
-      await page.waitForTimeout(2000);
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
-
-      if (isVenue) {
-        // Some deployments re-render this dropdown and drop the selection, so
-        // confirm it stuck and wait for the calendar it should trigger.
+        // Confirm the selection stuck, then wait for whichever comes next: some
+        // councils render the calendar in place, others show a Next button that
+        // leads to it. Either counts as progress.
         for (let attempt = 1; attempt <= 3; attempt++) {
           const current = await sel.inputValue().catch(() => '');
           if (current !== choice.value) {
@@ -153,23 +142,26 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
             await sel.selectOption({ label: choice.text }, { timeout: 5000 }).catch(() => {});
             await page.waitForTimeout(2000);
           }
-          // Some councils sit on a spinner for a long time, so wait for the
-          // loader to clear before deciding the calendar is not coming.
-          await page
-            .waitForSelector('[class*="loader" i], [class*="spinner" i], img[src*="loader" i]', {
-              state: 'hidden',
-              timeout: 45000,
-            })
-            .catch(() => {});
-          const appeared = await page
-            .waitForSelector('[class*="sis-ct-timeslot"], .ui-datepicker-inline', { timeout: 30000, state: 'visible' })
-            .then(() => true)
-            .catch(() => false);
-          if (appeared) {
-            log('calendar rendered');
+          let outcome = null;
+          const deadline = Date.now() + 40000;
+          while (Date.now() < deadline && !outcome) {
+            const state = await page.evaluate(() => {
+              const vis = (el) => el && el.offsetParent !== null;
+              const cal = [...document.querySelectorAll('[class*="sis-ct-timeslot"], .ui-datepicker-inline')].some(vis);
+              const next = [...document.querySelectorAll('button, input[type=submit]')].some(
+                (el) => vis(el) && /^(next|continue)$/i.test((el.value || el.textContent || '').trim())
+              );
+              return { cal, next };
+            });
+            if (state.cal) outcome = 'calendar';
+            else if (state.next) outcome = 'next';
+            else await page.waitForTimeout(2000);
+          }
+          if (outcome) {
+            log(outcome === 'calendar' ? 'calendar rendered' : 'venue accepted, Next available');
             break;
           }
-          if (attempt === 3) log('calendar never rendered for this venue');
+          if (attempt === 3) log('nothing appeared after selecting this venue');
         }
       }
     }
