@@ -2,9 +2,10 @@ name: Check registrar availability
 
 on:
   schedule:
-    # Every 15 minutes. GitHub queues scheduled jobs, so in practice expect
-    # anything from on time to about 10 minutes late.
-    - cron: "*/15 * * * *"
+    # Every 5 minutes between 06:00 and 21:00 UTC. Five minutes is the finest
+    # granularity GitHub allows, and it queues scheduled jobs, so late runs are
+    # normal. Overnight is skipped because nothing is released then.
+    - cron: "*/5 6-21 * * *"
   workflow_dispatch:
 
 concurrency:

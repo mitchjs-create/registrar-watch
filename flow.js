@@ -96,7 +96,7 @@ function parseDay(dayText, viewYear) {
   return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
 
-async function advanceToCalendar(page, venue, log = () => {}, maxScreens = 8) {
+async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxScreens = 8) {
   for (let screen = 1; screen <= maxScreens; screen++) {
     const s = await page.evaluate(surveyScreen);
     if (s.errors.length) return { ok: false, error: `blocked: ${s.errors.join(' | ')}` };
@@ -164,6 +164,21 @@ async function advanceToCalendar(page, venue, log = () => {}, maxScreens = 8) {
           if (attempt === 3) log('calendar never rendered for this venue');
         }
       }
+    }
+
+    // Some councils gate the calendar behind contact details.
+    for (const c of s.controls) {
+      if (!['text', 'email', 'tel'].includes(c.type) || c.value) continue;
+      const l = c.label.toLowerCase();
+      let v = null;
+      if (/first ?name|forename/.test(l)) v = details.firstName;
+      else if (/surname|last ?name|family ?name/.test(l)) v = details.lastName;
+      else if (/e-?mail/.test(l) || c.type === 'email') v = details.email;
+      else if (/mobile|phone|telephone/.test(l) || c.type === 'tel') v = details.mobile;
+      if (!v || !c.id) continue;
+      await page.locator(`[id="${c.id}"]`).fill(v, { timeout: 5000 }).catch(() => {});
+      log(`filled "${c.label}"`);
+      acted = true;
     }
 
     const next = page.getByRole('button', { name: /^(next|continue|start|begin)$/i }).first();

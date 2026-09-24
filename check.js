@@ -49,7 +49,23 @@ function prettyDate(iso) {
   });
 }
 
-async function checkVenue(browser, site, venue) {
+// Contact details for the councils that demand them before showing a calendar.
+// The email defaults to a plus alias on the Gmail account used for alerts, so
+// anything the council sends lands in an inbox you own. The mobile default is
+// inside Ofcom's reserved fictional range, which can never be allocated to a
+// real person.
+function buildDetails() {
+  const gmail = process.env.GMAIL_USER || '';
+  const derived = gmail.includes('@') ? gmail.replace('@', '+registrar@') : '';
+  return {
+    firstName: process.env.TH_FIRST_NAME || 'Availability',
+    lastName: process.env.TH_LAST_NAME || 'Check',
+    email: process.env.TH_EMAIL || derived || '',
+    mobile: process.env.TH_MOBILE || '07700900123',
+  };
+}
+
+async function checkVenue(browser, site, venue, details) {
   const context = await browser.newContext({ userAgent: UA, locale: 'en-GB', timezoneId: 'Europe/London' });
   const page = await context.newPage();
   const log = (m) => console.log(`    ${m}`);
@@ -58,7 +74,7 @@ async function checkVenue(browser, site, venue) {
     await page.waitForLoadState('networkidle', { timeout: 20000 }).catch(() => {});
     await page.waitForTimeout(2500);
 
-    const nav = await advanceToCalendar(page, venue, log);
+    const nav = await advanceToCalendar(page, venue, log, details);
     if (!nav.ok) {
       await context.close();
       return { ok: false, error: nav.error };
@@ -85,7 +101,16 @@ async function main() {
   const state = loadState();
   state.venues = state.venues || {};
 
-  const sites = config.sites.filter((s) => s.enabled !== false && (!siteArg || s.key === siteArg));
+  const details = buildDetails();
+  const sites = config.sites.filter((s) => {
+    if (s.enabled === false) return false;
+    if (siteArg && s.key !== siteArg) return false;
+    if (s.requiresDetails && !details.email) {
+      console.log(`[skip] ${s.name} needs contact details and no email is configured`);
+      return false;
+    }
+    return true;
+  });
   const browser = await chromium.launch({ headless: true });
   const alerts = [];
   const broken = [];
@@ -95,7 +120,7 @@ async function main() {
       const id = `${site.key}::${venue}`;
       console.log(`[check] ${site.name} / ${venue}`);
       const prev = state.venues[id] || { slots: [], failures: 0 };
-      const result = await checkVenue(browser, site, venue);
+      const result = await checkVenue(browser, site, venue, details);
 
       if (!result.ok) {
         const failures = (prev.failures || 0) + 1;

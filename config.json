@@ -57,11 +57,12 @@
       "name": "Tower Hamlets Register Office",
       "url": "https://registrar.towerhamlets.gov.uk/Agenda/OnlineBookings/appointment.html?pg=d9b8e6dc-a073-42d8-ad2e-608b7295297f",
       "steps": [],
-      "enabled": false,
+      "enabled": true,
       "venues": [
         "Tower Hamlets Register Office"
       ],
-      "note": "Asks for first name, surname, email and mobile before showing anything. Needs details supplied via secrets before it can be enabled."
+      "note": "Asks for name, email and mobile before showing a calendar. Uses TH_* secrets, or a plus alias on GMAIL_USER.",
+      "requiresDetails": true
     }
   ]
 }
