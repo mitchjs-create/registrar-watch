@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 const { notify } = require('./notify');
-const { advanceToCalendar, readSlots, parseDay } = require('./flow');
+const { advanceToCalendar, readSlots, parseDay, surveyScreen } = require('./flow');
 
 const ROOT = __dirname;
 const STATE_PATH = path.join(ROOT, 'state.json');
@@ -77,6 +77,23 @@ async function checkVenue(browser, site, venue, details) {
 
     const nav = await advanceToCalendar(page, venue, log, details);
     if (!nav.ok) {
+      try {
+        fs.mkdirSync(path.join(ROOT, 'debug'), { recursive: true });
+        const slug = `${site.key}-stuck`;
+        await page.screenshot({ path: path.join(ROOT, 'debug', `${slug}.png`), fullPage: true });
+        const s = await page.evaluate(surveyScreen);
+        console.log(`    [stuck] headings: ${s.headings.join(' | ')}`);
+        console.log(`    [stuck] errors: ${s.errors.join(' | ') || 'none'}`);
+        for (const c2 of s.controls) {
+          console.log(`    [stuck] ${c2.tag}/${c2.type} value="${String(c2.value).slice(0, 30)}" label="${c2.label}"`);
+        }
+        const buttons = await page.evaluate(() =>
+          [...document.querySelectorAll('button, a.govuk-button, input[type=submit]')]
+            .filter((el) => el.offsetParent !== null)
+            .map((el) => (el.value || el.textContent || '').trim().slice(0, 30))
+        );
+        console.log(`    [stuck] buttons: ${buttons.join(' | ')}`);
+      } catch {}
       await context.close();
       return { ok: false, error: nav.error };
     }
