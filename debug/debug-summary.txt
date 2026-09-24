@@ -6,10 +6,5 @@
     filled "Mobile (required)"
     selected "Yes"
     selected "Marriage ceremony"
-    chose "Tower Hamlets Register Office"
-    calendar never rendered for this venue
-    [stuck] headings: Ceremony Booking | Venue selection | Support links
-    [stuck] errors: none
-    [stuck] buttons: Back | Exit
-    failed: no way forward from this screen (1 in a row)
+    failed: sel is not defined (1 in a row)
 [check] done
