@@ -15,6 +15,7 @@ const settings = config.settings || {};
 const args = process.argv.slice(2);
 const siteArg = (args.find((a) => a.startsWith('--site=')) || '').split('=')[1];
 const DRY = args.includes('--dry-run');
+const TEST_NOTIFY = args.includes('--test-notify');
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
@@ -98,6 +99,19 @@ async function checkVenue(browser, site, venue, details) {
 }
 
 async function main() {
+  if (TEST_NOTIFY) {
+    const details = buildDetails();
+    console.log(`channels: gmail=${!!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD)} resend=${!!process.env.RESEND_API_KEY} ntfy=${!!process.env.NTFY_TOPIC} telegram=${!!process.env.TELEGRAM_BOT_TOKEN}`);
+    console.log(`email_to set: ${!!process.env.EMAIL_TO}`);
+    console.log(`tower hamlets contact email resolves: ${details.email ? 'yes' : 'no'}`);
+    await notify({
+      title: 'registrar-watch test alert',
+      body: 'If you are reading this, alerts are working. Real ones will name the venue, date and time.',
+      url: 'https://github.com/mitchjs-create/registrar-watch',
+    });
+    return;
+  }
+
   const state = loadState();
   state.venues = state.venues || {};
 

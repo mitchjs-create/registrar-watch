@@ -41,7 +41,13 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          TH_FIRST_NAME: ${{ secrets.TH_FIRST_NAME }}
+          TH_LAST_NAME: ${{ secrets.TH_LAST_NAME }}
+          TH_EMAIL: ${{ secrets.TH_EMAIL }}
+          TH_MOBILE: ${{ secrets.TH_MOBILE }}
         run: node check.js
 
       - name: Save state
