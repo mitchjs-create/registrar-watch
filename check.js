@@ -76,17 +76,6 @@ function buildDetails() {
   };
 }
 
-const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-// A venue can be restricted to particular days of the week, for cases where the
-// other days are not worth hearing about.
-function allowedDay(site, venue, isoDate) {
-  const rule = (site.venueRules || {})[venue];
-  if (!rule || !rule.weekdays || !rule.weekdays.length) return true;
-  const name = DAY_NAMES[new Date(`${isoDate}T12:00:00Z`).getUTCDay()];
-  return rule.weekdays.some((d) => d.toLowerCase().startsWith(name.slice(0, 3).toLowerCase()));
-}
-
 async function checkVenue(browser, site, venue, details) {
   const context = await browser.newContext({ userAgent: UA, locale: 'en-GB', timezoneId: 'Europe/London' });
   const page = await context.newPage();
@@ -125,7 +114,6 @@ async function checkVenue(browser, site, venue, details) {
     for (const s of raw.slots) {
       const date = parseDay(s.day, raw.viewYear);
       if (!date || !inWindow(date)) continue;
-      if (!allowedDay(site, venue, date)) continue;
       if (!passesFilter(site, venue, date)) continue;
       const time = (s.text.match(/\d{1,2}[:.]\d{2}/) || [''])[0];
       found.push(`${date} ${time}`.trim());
