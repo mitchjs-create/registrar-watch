@@ -1,3 +1,12 @@
-channels: gmail=true resend=false ntfy=false telegram=false
-email_to set: true
-tower hamlets contact email resolves: yes
+[check] Tower Hamlets Register Office / Tower Hamlets Register Office
+    selected "I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
+    filled "First name (required)"
+    filled "Surname (required)"
+    filled "Email (required)"
+    filled "Mobile (required)"
+    selected "Yes"
+    selected "Marriage ceremony"
+    chose "Tower Hamlets Register Office"
+    calendar never rendered for this venue
+    failed: no way forward from this screen (1 in a row)
+[check] done
