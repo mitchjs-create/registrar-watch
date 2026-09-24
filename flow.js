@@ -153,8 +153,16 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
             await sel.selectOption({ label: choice.text }, { timeout: 5000 }).catch(() => {});
             await page.waitForTimeout(2000);
           }
+          // Some councils sit on a spinner for a long time, so wait for the
+          // loader to clear before deciding the calendar is not coming.
+          await page
+            .waitForSelector('[class*="loader" i], [class*="spinner" i], img[src*="loader" i]', {
+              state: 'hidden',
+              timeout: 45000,
+            })
+            .catch(() => {});
           const appeared = await page
-            .waitForSelector('[class*="sis-ct-timeslot"], .ui-datepicker-inline', { timeout: 12000, state: 'visible' })
+            .waitForSelector('[class*="sis-ct-timeslot"], .ui-datepicker-inline', { timeout: 30000, state: 'visible' })
             .then(() => true)
             .catch(() => false);
           if (appeared) {
