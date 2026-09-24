@@ -19,6 +19,8 @@ const TEST_NOTIFY = args.includes('--test-notify');
 // Ignore the date window and the day-of-week rules, to answer "what is the
 // earliest anywhere right now". Always run this with --dry-run.
 const ALL_DATES = args.includes('--all-dates');
+// Email the earliest-per-venue rundown, rather than only printing it.
+const EMAIL_SUMMARY = args.includes('--email-summary');
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
@@ -170,6 +172,7 @@ async function main() {
     return true;
   });
   const browser = await chromium.launch({ headless: true });
+  const summary = [];
   const alerts = [];
   const broken = [];
 
@@ -201,6 +204,8 @@ async function main() {
         lastChange: added.length ? new Date().toISOString() : prev.lastChange || null,
       };
 
+      if (ALL_DATES) summary.push({ site, venue, slots: result.slots });
+
       if (added.length && (!firstRun || settings.notifyOnFirstRun)) {
         alerts.push({ site, venue, added, firstRun });
       }
@@ -209,6 +214,24 @@ async function main() {
 
   await browser.close();
   if (!DRY) fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n');
+
+  if (ALL_DATES && EMAIL_SUMMARY) {
+    const ranked = summary
+      .filter((s) => s.slots.length)
+      .sort((a, b) => a.slots[0].localeCompare(b.slots[0]));
+    const empty = summary.filter((s) => !s.slots.length);
+    const lines = ranked.map((s) => {
+      const [d, t] = s.slots[0].split(' ');
+      const sameDay = s.slots.filter((x) => x.startsWith(d)).length;
+      return `${prettyDate(d)} at ${t}${sameDay > 1 ? ` (+${sameDay - 1} more that day)` : ''}\n   ${s.venue}`;
+    });
+    for (const s of empty) lines.push(`Nothing visible\n   ${s.venue}`);
+    await notify({
+      title: 'registrar-watch: earliest availability everywhere',
+      body: `${lines.join('\n\n')}\n\nThis is a full rundown ignoring the 7 November cutoff. Normal alerts only cover dates before it.`,
+      url: 'https://github.com/mitchjs-create/registrar-watch',
+    });
+  }
 
   for (const a of alerts) {
     const lines = a.added
