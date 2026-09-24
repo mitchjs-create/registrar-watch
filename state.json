@@ -34,73 +34,69 @@
   "venues": {
     "wandsworth::The Town Hall, Wandsworth High Street - The Elizabeth Room": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-24T14:26:53.464Z",
-      "lastChange": null,
-      "lastError": "page.goto: net::ERR_CONNECTION_RESET at https://registrars.wandsworth.gov.uk/Agenda/NewOnlineBookings/appointment.html?pg=6b9156c5-557c-40a1-a9ef-a2e9ba5fe25f\nCall log:\n  - navigating to \"https://registrars.wandsworth.gov.uk/Agenda/NewOnlineBookings/appointment.html?pg=6b9156c5-557c-40a1-a9ef-a2e9ba5fe25f\", waiting until \"domcontentloaded\"\n"
+      "failures": 0,
+      "lastRun": "2026-09-24T18:33:09.668Z",
+      "lastChange": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Victoria Room": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-24T14:27:30.404Z",
-      "lastChange": null,
-      "lastError": "no way forward from this screen"
+      "failures": 0,
+      "lastRun": "2026-09-24T18:33:28.688Z",
+      "lastChange": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Alexandra Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-24T14:27:47.420Z",
+      "lastRun": "2026-09-24T18:33:46.017Z",
       "lastChange": null
     },
     "southwark::Southwark District Register Office": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-24T14:27:54.237Z",
-      "lastChange": null,
-      "lastError": "no way forward from this screen"
+      "failures": 0,
+      "lastRun": "2026-09-24T18:34:05.450Z",
+      "lastChange": null
     },
     "southwark::CAMBERWELL HOUSE": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-24T14:28:10.521Z",
+      "lastRun": "2026-09-24T18:34:22.776Z",
       "lastChange": "2026-09-23T23:46:24.742Z"
     },
     "islington::Islington Town Hall - Say I Do With Two": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-24T14:29:13.255Z",
-      "lastChange": null,
-      "lastError": "no way forward from this screen"
+      "failures": 0,
+      "lastRun": "2026-09-24T18:34:37.847Z",
+      "lastChange": null
     },
     "lincolnshire::Boston Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-24T14:29:27.750Z",
+      "lastRun": "2026-09-24T18:34:52.365Z",
       "lastChange": null
     },
     "lincolnshire::Grantham Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-24T14:29:42.163Z",
+      "lastRun": "2026-09-24T18:35:07.180Z",
       "lastChange": null
     },
     "lincolnshire::Lincoln Register Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-24T14:29:56.748Z",
+      "lastRun": "2026-09-24T18:35:21.647Z",
       "lastChange": null
     },
     "towerhamlets::Tower Hamlets Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-24T14:30:17.802Z",
+      "lastRun": "2026-09-24T18:35:43.109Z",
       "lastChange": null
     },
     "camden::Camden Register Office": {
       "slots": [],
-      "failures": 1,
-      "lastError": "no way forward from this screen",
-      "lastRun": "2026-09-24T14:31:20.139Z"
+      "failures": 0,
+      "lastRun": "2026-09-24T18:36:04.887Z",
+      "lastChange": null
     }
   }
 }
