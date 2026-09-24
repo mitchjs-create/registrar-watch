@@ -132,6 +132,18 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
       const isVenue = /ChooseTimeOffice/i.test(c.id) || /venue|taking place/i.test(c.label);
       let choice = c.options[1];
       if (isVenue) {
+        const match = c.options.find((o) => o.text === venue);
+        if (!match) return { ok: false, error: `venue "${venue}" not offered` };
+        choice = match;
+      }
+      const sel = page.locator(`[id="${c.id}"]`);
+      await sel.selectOption(choice.value, { timeout: 5000 }).catch(() => {});
+      log(`chose "${choice.text}"`);
+      acted = true;
+      await page.waitForTimeout(2000);
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+
+      if (isVenue) {
         // Confirm the selection stuck, then wait for whichever comes next: some
         // councils render the calendar in place, others show a Next button that
         // leads to it. Either counts as progress.
