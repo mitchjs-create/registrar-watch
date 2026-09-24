@@ -28,7 +28,14 @@
       "venues": [
         "Southwark District Register Office",
         "CAMBERWELL HOUSE"
-      ]
+      ],
+      "filters": {
+        "CAMBERWELL HOUSE": {
+          "weekdays": [
+            "Wed"
+          ]
+        }
+      }
     },
     {
       "key": "islington",

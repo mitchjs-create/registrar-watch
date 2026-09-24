@@ -40,6 +40,16 @@ function inWindow(date) {
   return true;
 }
 
+const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+// Optional per-venue rules, e.g. only care about Wednesdays at one venue.
+function passesFilter(site, venue, isoDate) {
+  const rule = site.filters && site.filters[venue];
+  if (!rule || !rule.weekdays || !rule.weekdays.length) return true;
+  const day = WEEKDAYS[new Date(`${isoDate}T12:00:00Z`).getUTCDay()];
+  return rule.weekdays.includes(day);
+}
+
 function prettyDate(iso) {
   return new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-GB', {
     weekday: 'short',
@@ -104,6 +114,7 @@ async function checkVenue(browser, site, venue, details) {
     for (const s of raw.slots) {
       const date = parseDay(s.day, raw.viewYear);
       if (!date || !inWindow(date)) continue;
+      if (!passesFilter(site, venue, date)) continue;
       const time = (s.text.match(/\d{1,2}[:.]\d{2}/) || [''])[0];
       found.push(`${date} ${time}`.trim());
     }
