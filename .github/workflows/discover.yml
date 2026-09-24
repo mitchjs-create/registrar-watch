@@ -51,7 +51,9 @@ jobs:
         run: |
           SITE_ARG=""
           if [[ "${{ inputs.site }}" != "all" ]]; then SITE_ARG="--site=${{ inputs.site }}"; fi
-          if [[ "${{ inputs.mode }}" == "notify-test" ]]; then
+          if [[ "${{ inputs.mode }}" == "all-dates" ]]; then
+            node check.js --all-dates --dry-run $SITE_ARG 2>&1 | tee debug-summary.txt
+          elif [[ "${{ inputs.mode }}" == "notify-test" ]]; then
             node check.js --test-notify 2>&1 | tee debug-summary.txt
           elif [[ "${{ inputs.mode }}" == "explore" ]]; then
             node explore.js $SITE_ARG 2>&1 | tee debug-summary.txt

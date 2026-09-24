@@ -16,6 +16,9 @@ const args = process.argv.slice(2);
 const siteArg = (args.find((a) => a.startsWith('--site=')) || '').split('=')[1];
 const DRY = args.includes('--dry-run');
 const TEST_NOTIFY = args.includes('--test-notify');
+// Ignore the date window and the day-of-week rules, to answer "what is the
+// earliest anywhere right now". Always run this with --dry-run.
+const ALL_DATES = args.includes('--all-dates');
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
@@ -124,8 +127,9 @@ async function checkVenue(browser, site, venue, details) {
     const found = [];
     for (const s of raw.slots) {
       const date = parseDay(s.day, raw.viewYear);
-      if (!date || !inWindow(date)) continue;
-      if (!allowedDay(site, venue, date)) continue;
+      if (!date) continue;
+      if (!ALL_DATES && !inWindow(date)) continue;
+      if (!ALL_DATES && !allowedDay(site, venue, date)) continue;
       if (!passesFilter(site, venue, date)) continue;
       const time = (s.text.match(/\d{1,2}[:.]\d{2}/) || [''])[0];
       found.push(`${date} ${time}`.trim());
@@ -188,6 +192,7 @@ async function main() {
       const added = result.slots.filter((s) => !previous.has(s));
       const firstRun = !prev.lastRun;
       console.log(`    ${result.slots.length} in-window slot(s), ${added.length} new, ${result.rawCount} slot(s) on the page in total`);
+      if (ALL_DATES) console.log(`    EARLIEST: ${result.slots[0] || 'none visible'}   all: ${result.slots.join(', ')}`);
 
       state.venues[id] = {
         slots: result.slots,
