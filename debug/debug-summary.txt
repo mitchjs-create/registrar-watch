@@ -1,3 +1,77 @@
-channels: gmail=true resend=false ntfy=false telegram=false
-email_to set: true
-tower hamlets contact email resolves: yes
+[check] Wandsworth Register Office / The Town Hall, Wandsworth High Street - The Elizabeth Room
+    ticked "I confirm and accept the above"
+    chose "Wandsworth Ceremonies website"
+    chose "The Town Hall, Wandsworth High Street - The Elizabeth Room"
+    calendar rendered
+    6 in-window slot(s), 6 new, 6 slot(s) on the page in total
+    EARLIEST: 2026-12-01 09:30   all: 2026-12-01 09:30, 2026-12-01 14:00, 2026-12-02 15:30, 2026-12-03 09:30, 2026-12-03 14:00, 2026-12-03 14:45
+[check] Wandsworth Register Office / The Town Hall, Wandsworth High Street - The Victoria Room
+    ticked "I confirm and accept the above"
+    chose "Wandsworth Ceremonies website"
+    chose "The Town Hall, Wandsworth High Street - The Victoria Room"
+    calendar rendered
+    10 in-window slot(s), 10 new, 10 slot(s) on the page in total
+    EARLIEST: 2026-11-30 11:00   all: 2026-11-30 11:00, 2026-11-30 14:00, 2026-11-30 14:45, 2026-11-30 15:30, 2026-12-01 09:30, 2026-12-01 14:00, 2026-12-02 15:30, 2026-12-03 09:30, 2026-12-03 14:00, 2026-12-03 14:45
+[check] Wandsworth Register Office / The Town Hall, Wandsworth High Street - The Alexandra Room
+    ticked "I confirm and accept the above"
+    chose "Wandsworth Ceremonies website"
+    chose "The Town Hall, Wandsworth High Street - The Alexandra Room"
+    calendar rendered
+    4 in-window slot(s), 4 new, 4 slot(s) on the page in total
+    EARLIEST: 2026-11-07 10:00   all: 2026-11-07 10:00, 2026-11-07 11:00, 2026-11-07 13:00, 2026-11-07 15:00
+[check] Southwark Register Office / Southwark District Register Office
+    selected "Marriage ceremony"
+    ticked "I/we confirm that we have read and accepted the above terms and conditions for the civil ceremony."
+    chose "Southwark District Register Office"
+    calendar rendered
+    1 in-window slot(s), 1 new, 1 slot(s) on the page in total
+    EARLIEST: 2026-11-09 15:00   all: 2026-11-09 15:00
+[check] Southwark Register Office / CAMBERWELL HOUSE
+    selected "Marriage ceremony"
+    ticked "I/we confirm that we have read and accepted the above terms and conditions for the civil ceremony."
+    chose "CAMBERWELL HOUSE"
+    calendar rendered
+    0 in-window slot(s), 0 new, 1 slot(s) on the page in total
+    EARLIEST: none visible   all: 
+[check] Islington Register Office / Islington Town Hall - Say I Do With Two
+    selected "Yes"
+    chose "Islington Town Hall - Say I Do With Two"
+    calendar rendered
+    3 in-window slot(s), 3 new, 3 slot(s) on the page in total
+    EARLIEST: 2027-01-20 13:30   all: 2027-01-20 13:30, 2027-01-20 14:30, 2027-01-20 15:30
+[check] Lincolnshire Registration Service / Boston Registration Office (You Plus Two Ceremony)
+    ticked "I confirm that I have read, understand and agree to be bound by the Terms and Conditions."
+    chose "Boston Registration Office (You Plus Two Ceremony)"
+    calendar rendered
+    2 in-window slot(s), 2 new, 2 slot(s) on the page in total
+    EARLIEST: 2027-03-08 09:30   all: 2027-03-08 09:30, 2027-03-08 10:30
+[check] Lincolnshire Registration Service / Grantham Registration Office (You Plus Two Ceremony)
+    ticked "I confirm that I have read, understand and agree to be bound by the Terms and Conditions."
+    chose "Grantham Registration Office (You Plus Two Ceremony)"
+    calendar rendered
+    4 in-window slot(s), 4 new, 4 slot(s) on the page in total
+    EARLIEST: 2027-01-11 09:30   all: 2027-01-11 09:30, 2027-01-11 10:00, 2027-01-11 11:00, 2027-01-11 11:30
+[check] Lincolnshire Registration Service / Lincoln Register Office (You Plus Two Ceremony)
+    ticked "I confirm that I have read, understand and agree to be bound by the Terms and Conditions."
+    chose "Lincoln Register Office (You Plus Two Ceremony)"
+    calendar rendered
+    2 in-window slot(s), 2 new, 2 slot(s) on the page in total
+    EARLIEST: 2027-01-11 09:30   all: 2027-01-11 09:30, 2027-01-11 10:00
+[check] Tower Hamlets Register Office / Tower Hamlets Register Office
+    selected "I give my consent for Tower Hamlets Council to use my information to assist them with my registration appointment and/or"
+    filled "First name (required)"
+    filled "Surname (required)"
+    filled "Email (required)"
+    filled "Mobile (required)"
+    selected "Yes"
+    selected "Marriage ceremony"
+    chose "Tower Hamlets Register Office"
+    venue accepted, Next available
+    1 in-window slot(s), 1 new, 1 slot(s) on the page in total
+    EARLIEST: 2027-04-21 09:30   all: 2027-04-21 09:30
+[check] Camden Register Office / Camden Register Office
+    chose "Camden Register Office"
+    calendar rendered
+    1 in-window slot(s), 1 new, 1 slot(s) on the page in total
+    EARLIEST: 2027-04-13 09:30   all: 2027-04-13 09:30
+[check] done
