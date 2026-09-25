@@ -148,7 +148,12 @@ async function main() {
   if (TEST_NOTIFY) {
     const details = buildDetails();
     console.log(`channels: gmail=${!!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD)} resend=${!!process.env.RESEND_API_KEY} ntfy=${!!process.env.NTFY_TOPIC} telegram=${!!process.env.TELEGRAM_BOT_TOKEN}`);
-    console.log(`email_to set: ${!!process.env.EMAIL_TO}`);
+    const rcpts = (process.env.EMAIL_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
+    console.log(
+      `recipients: ${rcpts.length} -> ${rcpts
+        .map((r) => `${r.slice(0, 2)}***@${r.split('@')[1] || '?'}`)
+        .join(', ')}`
+    );
     console.log(`tower hamlets contact email resolves: ${details.email ? 'yes' : 'no'}`);
     await notify({
       title: 'registrar-watch test alert',

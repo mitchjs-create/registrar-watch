@@ -1,17 +1,16 @@
 name: Check registrar availability
 
 on:
+  # GitHub throttles cron heavily, so this is only a safety net that restarts
+  # the watcher. The real cadence comes from the loop inside the job.
   schedule:
-    # Every 5 minutes, 05:00 to 21:59 UTC. Cron has no timezone, so during
-    # British Summer Time that is 06:00 to 22:59 local, and after the clocks go
-    # back on 25 October it is 05:00 to 21:59 local. Five minutes is the finest
-    # granularity GitHub allows and scheduled runs are often queued late.
-    - cron: "*/5 5-21 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
+# A newer run replaces an older one, so there is only ever one watcher alive.
 concurrency:
   group: registrar-watch
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -19,7 +18,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
 
@@ -33,7 +32,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Run checker
+      - name: Watch
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           NTFY_SERVER: ${{ secrets.NTFY_SERVER }}
@@ -49,21 +48,24 @@ jobs:
           TH_LAST_NAME: ${{ secrets.TH_LAST_NAME }}
           TH_EMAIL: ${{ secrets.TH_EMAIL }}
           TH_MOBILE: ${{ secrets.TH_MOBILE }}
-        run: node check.js
-
-      - name: Save state
         run: |
-          mkdir -p debug 2>/dev/null || true
-          mv -f debug-summary.txt debug/ 2>/dev/null || true
           git config user.name "registrar-watch"
           git config user.email "actions@users.noreply.github.com"
-          git fetch -q origin main
-          git reset -q --soft origin/main
-          git add -A state.json 2>/dev/null || true
-          if [[ -n "$(git diff --cached --name-only)" ]]; then
-            git commit -qm "Run output $(date -u '+%Y-%m-%d %H:%M UTC')"
-            git push -q origin HEAD:main
-            echo "committed"
-          else
-            echo "nothing to commit"
-          fi
+          END=$((SECONDS + 19800))   # five and a half hours
+          while [ $SECONDS -lt $END ]; do
+            HOUR=$(date -u +%H)
+            if [ "$((10#$HOUR))" -ge 5 ] && [ "$((10#$HOUR))" -le 21 ]; then
+              echo "=== sweep at $(date -u '+%H:%M UTC') ==="
+              node check.js || echo "sweep failed, carrying on"
+              if [[ -n "$(git status --porcelain state.json)" ]]; then
+                git fetch -q origin main
+                git reset -q --soft origin/main
+                git add state.json
+                git commit -qm "State $(date -u '+%Y-%m-%d %H:%M UTC')"
+                git push -q origin HEAD:main || echo "push failed, will retry next sweep"
+              fi
+            else
+              echo "outside watching hours, idling"
+            fi
+            sleep 300
+          done
