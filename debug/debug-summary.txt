@@ -1,3 +1,3 @@
 channels: gmail=true resend=false ntfy=false telegram=false
-email_to set: true
+recipients: 2 -> mi***@gmail.com, cr***@gmail.com
 tower hamlets contact email resolves: yes
