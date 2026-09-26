@@ -35,68 +35,71 @@
     "wandsworth::The Town Hall, Wandsworth High Street - The Elizabeth Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-26T08:37:50.105Z",
+      "lastRun": "2026-09-26T08:45:24.101Z",
       "lastChange": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Victoria Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-26T08:38:09.074Z",
+      "lastRun": "2026-09-26T08:45:43.220Z",
       "lastChange": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Alexandra Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-26T08:38:26.685Z",
+      "lastRun": "2026-09-26T08:45:58.311Z",
       "lastChange": null
     },
     "southwark::Southwark District Register Office": {
       "slots": [],
-      "failures": 10,
-      "lastRun": "2026-09-26T08:38:26.890Z",
+      "failures": 11,
+      "lastRun": "2026-09-26T08:45:58.510Z",
       "lastChange": null,
       "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\nCall log:\n  - navigating to \"https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\", waiting until \"domcontentloaded\"\n"
     },
     "southwark::CAMBERWELL HOUSE": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-09-26T08:38:43.949Z",
-      "lastChange": "2026-09-23T23:46:24.742Z"
+      "failures": 1,
+      "lastRun": "2026-09-26T08:45:58.986Z",
+      "lastChange": "2026-09-23T23:46:24.742Z",
+      "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\nCall log:\n  - navigating to \"https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\", waiting until \"domcontentloaded\"\n"
     },
     "islington::Islington Town Hall - Say I Do With Two": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-26T08:38:58.837Z",
+      "lastRun": "2026-09-26T08:46:13.934Z",
       "lastChange": null
     },
     "lincolnshire::Boston Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-26T08:39:13.499Z",
+      "lastRun": "2026-09-26T08:46:28.617Z",
       "lastChange": null
     },
     "lincolnshire::Grantham Registration Office (You Plus Two Ceremony)": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-09-26T08:39:28.133Z",
-      "lastChange": null
+      "failures": 1,
+      "lastRun": "2026-09-26T08:47:05.295Z",
+      "lastChange": null,
+      "lastError": "no way forward from this screen"
     },
     "lincolnshire::Lincoln Register Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-26T08:39:43.199Z",
+      "lastRun": "2026-09-26T08:47:20.230Z",
       "lastChange": null
     },
     "towerhamlets::Tower Hamlets Register Office": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-09-26T08:40:04.428Z",
-      "lastChange": null
+      "failures": 1,
+      "lastRun": "2026-09-26T08:47:21.009Z",
+      "lastChange": null,
+      "lastError": "page.goto: net::ERR_CONNECTION_RESET at https://registrar.towerhamlets.gov.uk/Agenda/OnlineBookings/appointment.html?pg=d9b8e6dc-a073-42d8-ad2e-608b7295297f\nCall log:\n  - navigating to \"https://registrar.towerhamlets.gov.uk/Agenda/OnlineBookings/appointment.html?pg=d9b8e6dc-a073-42d8-ad2e-608b7295297f\", waiting until \"domcontentloaded\"\n"
     },
     "camden::Camden Register Office": {
       "slots": [],
-      "failures": 11,
-      "lastRun": "2026-09-26T08:40:04.629Z",
+      "failures": 12,
+      "lastRun": "2026-09-26T08:47:21.212Z",
       "lastChange": null,
       "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://camden.sishost.co.uk/Agenda/TelephoneRegistration/Appointment.html?pg=06edd7c1-1597-4311-aeb9-2a7b52ad21db\nCall log:\n  - navigating to \"https://camden.sishost.co.uk/Agenda/TelephoneRegistration/Appointment.html?pg=06edd7c1-1597-4311-aeb9-2a7b52ad21db\", waiting until \"domcontentloaded\"\n"
     }
