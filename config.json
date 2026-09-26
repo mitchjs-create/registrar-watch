@@ -3,8 +3,13 @@
     "windowStart": null,
     "windowEnd": "2026-11-06",
     "notifyOnFirstRun": true,
-    "failuresBeforeAlert": 3,
-    "perSiteTimeoutMs": 120000
+    "failuresBeforeAlert": 20,
+    "perSiteTimeoutMs": 120000,
+    "alertCooldownHours": 12,
+    "attemptsPerVenue": 3,
+    "gapBetweenVenuesMs": 8000,
+    "sweepMinutes": 8,
+    "gapPerHostMs": 25000
   },
   "sites": [
     {

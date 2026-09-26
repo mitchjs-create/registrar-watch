@@ -92,6 +92,32 @@ function allowedDay(site, venue, isoDate) {
   return rule.weekdays.some((d) => d.toLowerCase().startsWith(name.slice(0, 3).toLowerCase()));
 }
 
+// A dropped connection tells us nothing about availability, so retry before
+// treating it as a failure. The councils throttle by IP, so back off between
+// attempts rather than hammering.
+const TRANSIENT = /ERR_CONNECTION|ERR_NETWORK|ERR_EMPTY_RESPONSE|ERR_TIMED_OUT|net::|Timeout \d+ms exceeded|no way forward from this screen|ran out of screens/i;
+
+function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+async function checkVenueWithRetry(browser, site, venue, details) {
+  const attempts = settings.attemptsPerVenue || 3;
+  let last = null;
+  for (let i = 1; i <= attempts; i++) {
+    last = await checkVenue(browser, site, venue, details);
+    if (last.ok) {
+      if (i > 1) console.log(`    recovered on attempt ${i}`);
+      return last;
+    }
+    if (!TRANSIENT.test(last.error || '') || i === attempts) return last;
+    const backoff = 5000 * i + Math.floor(Math.random() * 4000);
+    console.log(`    attempt ${i} failed (${String(last.error).slice(0, 60)}), retrying in ${Math.round(backoff / 1000)}s`);
+    await sleep(backoff);
+  }
+  return last;
+}
+
 async function checkVenue(browser, site, venue, details) {
   const context = await browser.newContext({ userAgent: UA, locale: 'en-GB', timezoneId: 'Europe/London' });
   const page = await context.newPage();
@@ -181,18 +207,54 @@ async function main() {
   const alerts = [];
   const broken = [];
 
+  // Southwark, Islington, Lincolnshire and Camden all run on sishost.co.uk, so
+  // back-to-back checks of those four hit one server four times over. Wait
+  // longer before returning to a host we have just used.
+  const lastHit = {};
+  const hostOf = (u) => {
+    try {
+      return new URL(u).hostname.split('.').slice(-3).join('.');
+    } catch {
+      return u;
+    }
+  };
+
   for (const site of sites) {
     for (const venue of site.venues || []) {
+      const host = hostOf(site.url);
+      const base = settings.gapBetweenVenuesMs || 8000;
+      const perHost = settings.gapPerHostMs || 25000;
+      const since = lastHit[host] ? Date.now() - lastHit[host] : Infinity;
+      const wait = Math.max(base, since < perHost ? perHost - since : 0) + Math.floor(Math.random() * 4000);
+      if (Number.isFinite(since) || Object.keys(lastHit).length) {
+        console.log(`    (waiting ${Math.round(wait / 1000)}s before ${host})`);
+        await sleep(wait);
+      }
+      lastHit[host] = Date.now();
+
       const id = `${site.key}::${venue}`;
       console.log(`[check] ${site.name} / ${venue}`);
       const prev = state.venues[id] || { slots: [], failures: 0 };
-      const result = await checkVenue(browser, site, venue, details);
+      const result = await checkVenueWithRetry(browser, site, venue, details);
 
       if (!result.ok) {
         const failures = (prev.failures || 0) + 1;
-        state.venues[id] = { ...prev, failures, lastError: result.error, lastRun: new Date().toISOString() };
+        const now = Date.now();
+        const cooldownMs = (settings.alertCooldownHours || 12) * 3600000;
+        const quietSince = prev.lastAlert ? now - Date.parse(prev.lastAlert) : Infinity;
+        const threshold = settings.failuresBeforeAlert || 20;
+        const worthTelling = failures >= threshold && quietSince > cooldownMs;
+
+        state.venues[id] = {
+          ...prev,
+          failures,
+          lastError: result.error,
+          lastRun: new Date().toISOString(),
+          lastAlert: worthTelling ? new Date().toISOString() : prev.lastAlert || null,
+        };
         console.error(`    failed: ${result.error} (${failures} in a row)`);
-        if (failures === (settings.failuresBeforeAlert || 3)) broken.push({ site, venue });
+        if (worthTelling) broken.push({ site, venue, failures });
+        if (ALL_DATES) summary.push({ site, venue, slots: [], unreachable: result.error });
         continue;
       }
 
@@ -207,6 +269,7 @@ async function main() {
         failures: 0,
         lastRun: new Date().toISOString(),
         lastChange: added.length ? new Date().toISOString() : prev.lastChange || null,
+        lastAlert: prev.lastAlert || null,
       };
 
       if (ALL_DATES) summary.push({ site, venue, slots: result.slots });
@@ -221,19 +284,34 @@ async function main() {
   if (!DRY) fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n');
 
   if (ALL_DATES && EMAIL_SUMMARY) {
+    const cutoff = settings.windowEnd;
     const ranked = summary
       .filter((s) => s.slots.length)
       .sort((a, b) => a.slots[0].localeCompare(b.slots[0]));
-    const empty = summary.filter((s) => !s.slots.length);
-    const lines = ranked.map((s) => {
+    const empty = summary.filter((s) => !s.slots.length && !s.unreachable);
+    const down = summary.filter((s) => s.unreachable);
+
+    const lines = ranked.map((s, i) => {
       const [d, t] = s.slots[0].split(' ');
       const sameDay = s.slots.filter((x) => x.startsWith(d)).length;
-      return `${prettyDate(d)} at ${t}${sameDay > 1 ? ` (+${sameDay - 1} more that day)` : ''}\n   ${s.venue}`;
+      const mark = cutoff && d <= cutoff ? '  ** inside your window **' : '';
+      return `${i + 1}. ${s.venue}\n   ${prettyDate(d)} at ${t}${
+        sameDay > 1 ? ` (and ${sameDay - 1} more slot(s) that day)` : ''
+      }${mark}`;
     });
-    for (const s of empty) lines.push(`Nothing visible\n   ${s.venue}`);
+    for (const s of empty) lines.push(`-. ${s.venue}\n   Nothing available at all`);
+    for (const s of down) lines.push(`-. ${s.venue}\n   Could not be reached this time`);
+
+    const inWindowCount = ranked.filter((s) => cutoff && s.slots[0].split(' ')[0] <= cutoff).length;
     await notify({
-      title: 'registrar-watch: earliest availability everywhere',
-      body: `${lines.join('\n\n')}\n\nThis is a full rundown ignoring the 7 November cutoff. Normal alerts only cover dates before it.`,
+      title: `Earliest appointment at every venue (${new Date().toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+      })})`,
+      body:
+        `Every venue being watched, soonest first.\n\n${lines.join('\n\n')}\n\n` +
+        `${inWindowCount} of ${summary.length} fall on or before ${cutoff || 'your cutoff'}.\n` +
+        `This rundown ignores the cutoff so you can see the whole picture. Automatic alerts still only cover dates before it.`,
       url: 'https://github.com/mitchjs-create/registrar-watch',
     });
   }
@@ -253,9 +331,10 @@ async function main() {
   }
 
   for (const b of broken) {
+    const hours = Math.round((b.failures * (settings.sweepMinutes || 8)) / 60);
     await notify({
-      title: `Checker stuck on ${b.site.name}`,
-      body: `Three failed runs for ${b.venue}. The booking flow has probably changed.`,
+      title: `Cannot reach ${b.venue}`,
+      body: `${b.site.name}\n\n${b.failures} failed checks in a row, roughly ${hours} hour(s). Their site may be down or blocking us, or the booking flow may have changed.\n\nYou will not get another message about this venue for at least ${settings.alertCooldownHours || 12} hours.`,
       url: b.site.url,
     });
   }

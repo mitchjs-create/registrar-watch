@@ -2,9 +2,11 @@ name: Check registrar availability
 
 on:
   # GitHub throttles cron heavily, so this is only a safety net that restarts
-  # the watcher. The real cadence comes from the loop inside the job.
+  # the watcher if it dies. The real cadence comes from the loop inside the job.
+  # Every four hours rather than hourly, because a restart cancels the running
+  # watcher and costs a couple of minutes reinstalling the browser.
   schedule:
-    - cron: "17 * * * *"
+    - cron: "17 */4 * * *"
   workflow_dispatch:
 
 # A newer run replaces an older one, so there is only ever one watcher alive.
@@ -67,5 +69,5 @@ jobs:
             else
               echo "outside watching hours, idling"
             fi
-            sleep 300
+            sleep 240
           done
