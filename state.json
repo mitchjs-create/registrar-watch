@@ -35,67 +35,70 @@
     "wandsworth::The Town Hall, Wandsworth High Street - The Elizabeth Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-25T21:52:33.539Z",
+      "lastRun": "2026-09-26T05:08:43.204Z",
       "lastChange": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Victoria Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-25T21:52:52.092Z",
+      "lastRun": "2026-09-26T05:09:02.373Z",
       "lastChange": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Alexandra Room": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-09-25T21:53:06.781Z",
-      "lastChange": null
+      "failures": 1,
+      "lastRun": "2026-09-26T05:09:03.042Z",
+      "lastChange": null,
+      "lastError": "page.goto: net::ERR_CONNECTION_RESET at https://registrars.wandsworth.gov.uk/Agenda/NewOnlineBookings/appointment.html?pg=6b9156c5-557c-40a1-a9ef-a2e9ba5fe25f\nCall log:\n  - navigating to \"https://registrars.wandsworth.gov.uk/Agenda/NewOnlineBookings/appointment.html?pg=6b9156c5-557c-40a1-a9ef-a2e9ba5fe25f\", waiting until \"domcontentloaded\"\n"
     },
     "southwark::Southwark District Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-25T21:53:22.802Z",
+      "lastRun": "2026-09-26T05:09:22.622Z",
       "lastChange": null
     },
     "southwark::CAMBERWELL HOUSE": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-25T21:53:38.853Z",
+      "lastRun": "2026-09-26T05:09:40.096Z",
       "lastChange": "2026-09-23T23:46:24.742Z"
     },
     "islington::Islington Town Hall - Say I Do With Two": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-09-25T21:53:52.804Z",
-      "lastChange": null
+      "failures": 1,
+      "lastRun": "2026-09-26T05:09:40.804Z",
+      "lastChange": null,
+      "lastError": "page.goto: net::ERR_CONNECTION_RESET at https://islington.sishost.co.uk/Agenda/TelephoneRegistration/appointment.html?pg=19c30ce9-21ed-477d-a8f0-7652f5e20ef5\nCall log:\n  - navigating to \"https://islington.sishost.co.uk/Agenda/TelephoneRegistration/appointment.html?pg=19c30ce9-21ed-477d-a8f0-7652f5e20ef5\", waiting until \"domcontentloaded\"\n"
     },
     "lincolnshire::Boston Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-25T21:54:06.533Z",
+      "lastRun": "2026-09-26T05:09:56.615Z",
       "lastChange": null
     },
     "lincolnshire::Grantham Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-25T21:54:20.351Z",
+      "lastRun": "2026-09-26T05:10:11.331Z",
       "lastChange": null
     },
     "lincolnshire::Lincoln Register Office (You Plus Two Ceremony)": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-09-25T21:54:34.055Z",
-      "lastChange": null
+      "failures": 1,
+      "lastRun": "2026-09-26T05:10:11.522Z",
+      "lastChange": null,
+      "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://lincolnshire.sishost.co.uk/Agenda/OnlineBookings/appointment.html?pg=dbfefeab-a6b8-41c9-bb8a-a3a44006188b\nCall log:\n  - navigating to \"https://lincolnshire.sishost.co.uk/Agenda/OnlineBookings/appointment.html?pg=dbfefeab-a6b8-41c9-bb8a-a3a44006188b\", waiting until \"domcontentloaded\"\n"
     },
     "towerhamlets::Tower Hamlets Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-25T21:54:54.429Z",
+      "lastRun": "2026-09-26T05:10:32.813Z",
       "lastChange": null
     },
     "camden::Camden Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-25T21:55:15.864Z",
+      "lastRun": "2026-09-26T05:10:55.939Z",
       "lastChange": null
     }
   }
