@@ -34,24 +34,24 @@
   "venues": {
     "wandsworth::The Town Hall, Wandsworth High Street - The Elizabeth Room": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-28T21:03:54.732Z",
+      "failures": 2,
+      "lastRun": "2026-09-28T21:31:10.683Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://registrars.wandsworth.gov.uk/Agenda/NewOnlineBookings/appointment.html?pg=6b9156c5-557c-40a1-a9ef-a2e9ba5fe25f\", waiting until \"domcontentloaded\"\n"
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Victoria Room": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-28T21:06:40.836Z",
+      "failures": 2,
+      "lastRun": "2026-09-28T21:33:55.766Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://registrars.wandsworth.gov.uk/Agenda/NewOnlineBookings/appointment.html?pg=6b9156c5-557c-40a1-a9ef-a2e9ba5fe25f\", waiting until \"domcontentloaded\"\n"
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Alexandra Room": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-28T21:09:25.566Z",
+      "failures": 2,
+      "lastRun": "2026-09-28T21:36:42.742Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://registrars.wandsworth.gov.uk/Agenda/NewOnlineBookings/appointment.html?pg=6b9156c5-557c-40a1-a9ef-a2e9ba5fe25f\", waiting until \"domcontentloaded\"\n"
@@ -59,53 +59,53 @@
     "southwark::Southwark District Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-28T21:09:52.521Z",
+      "lastRun": "2026-09-28T21:37:09.439Z",
       "lastChange": null,
       "lastAlert": null
     },
     "southwark::CAMBERWELL HOUSE": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-28T21:10:16.292Z",
+      "lastRun": "2026-09-28T21:37:34.535Z",
       "lastChange": "2026-09-23T23:46:24.742Z",
       "lastAlert": null
     },
     "islington::Islington Town Hall - Say I Do With Two": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-28T21:13:02.484Z",
+      "failures": 2,
+      "lastRun": "2026-09-28T21:40:21.629Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://islington.sishost.co.uk/Agenda/TelephoneRegistration/appointment.html?pg=19c30ce9-21ed-477d-a8f0-7652f5e20ef5\", waiting until \"domcontentloaded\"\n"
     },
     "lincolnshire::Boston Registration Office (You Plus Two Ceremony)": {
       "slots": [],
-      "failures": 25,
-      "lastRun": "2026-09-28T21:15:46.582Z",
+      "failures": 26,
+      "lastRun": "2026-09-28T21:43:04.894Z",
       "lastChange": null,
       "lastAlert": "2026-09-28T20:05:14.073Z",
       "lastError": "page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://lincolnshire.sishost.co.uk/Agenda/OnlineBookings/appointment.html?pg=dbfefeab-a6b8-41c9-bb8a-a3a44006188b\", waiting until \"domcontentloaded\"\n"
     },
     "lincolnshire::Grantham Registration Office (You Plus Two Ceremony)": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-28T21:18:34.275Z",
+      "failures": 2,
+      "lastRun": "2026-09-28T21:45:44.571Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://lincolnshire.sishost.co.uk/Agenda/OnlineBookings/appointment.html?pg=dbfefeab-a6b8-41c9-bb8a-a3a44006188b\", waiting until \"domcontentloaded\"\n"
     },
     "lincolnshire::Lincoln Register Office (You Plus Two Ceremony)": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-09-28T21:21:18.084Z",
+      "failures": 2,
+      "lastRun": "2026-09-28T21:48:32.281Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://lincolnshire.sishost.co.uk/Agenda/OnlineBookings/appointment.html?pg=dbfefeab-a6b8-41c9-bb8a-a3a44006188b\", waiting until \"domcontentloaded\"\n"
     },
     "towerhamlets::Tower Hamlets Register Office": {
       "slots": [],
-      "failures": 2,
-      "lastRun": "2026-09-28T21:24:02.869Z",
+      "failures": 3,
+      "lastRun": "2026-09-28T21:51:13.349Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://registrar.towerhamlets.gov.uk/Agenda/OnlineBookings/appointment.html?pg=d9b8e6dc-a073-42d8-ad2e-608b7295297f\", waiting until \"domcontentloaded\"\n"
@@ -113,7 +113,7 @@
     "camden::Camden Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-09-28T21:24:31.644Z",
+      "lastRun": "2026-09-28T21:51:41.749Z",
       "lastChange": null,
       "lastAlert": null
     }
