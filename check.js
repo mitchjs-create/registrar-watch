@@ -128,6 +128,10 @@ async function checkVenue(browser, site, venue, details) {
     await page.waitForTimeout(2500);
 
     const nav = await advanceToCalendar(page, venue, log, details);
+    if (nav.ok && nav.empty) {
+      await context.close();
+      return { ok: true, slots: [], view: 'no dates offered', rawCount: 0 };
+    }
     if (!nav.ok) {
       try {
         fs.mkdirSync(path.join(ROOT, 'debug'), { recursive: true });

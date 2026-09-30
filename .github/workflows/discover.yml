@@ -12,6 +12,13 @@ on:
         required: true
         default: "explore"
 
+# Share the watcher's concurrency group, so a manual sweep never runs on top of
+# a scheduled one. Two sweeps at once is what the councils refuse connections
+# for.
+concurrency:
+  group: registrar-watch
+  cancel-in-progress: true
+
 permissions:
   contents: write
 

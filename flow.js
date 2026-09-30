@@ -173,7 +173,29 @@ async function advanceToCalendar(page, venue, log = () => {}, details = {}, maxS
             log(outcome === 'calendar' ? 'calendar rendered' : 'venue accepted, Next available');
             break;
           }
-          if (attempt === 3) log('nothing appeared after selecting this venue');
+
+          // A venue with nothing at all left draws no calendar and offers no
+          // Next. That looks identical to a broken page unless we check: the
+          // screen is intact, our venue is still selected, and there is no
+          // error. That combination means fully booked, not broken.
+          const settled = await page.evaluate(() => {
+            const vis = (el) => el && el.offsetParent !== null;
+            return {
+              headings: [...document.querySelectorAll('h1, h2, legend')]
+                .filter(vis)
+                .map((el) => el.textContent.trim())
+                .join(' | '),
+              errors: [...document.querySelectorAll('.govuk-error-message, .govuk-error-summary')].some(vis),
+              spinner: [...document.querySelectorAll('[class*="loader" i], [class*="spinner" i]')].some(vis),
+            };
+          });
+          const stillChosen = (await sel.inputValue().catch(() => '')) === choice.value;
+          if (stillChosen && !settled.errors && !settled.spinner && /venue|ceremony/i.test(settled.headings)) {
+            log('venue accepted but no dates offered, treating as nothing available');
+            return { ok: true, empty: true };
+          }
+
+          if (attempt === 2) log('nothing appeared after selecting this venue');
         }
       }
     }
