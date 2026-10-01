@@ -8,7 +8,7 @@ on:
         required: true
         default: "all"
       mode:
-        description: "explore, capture, or notify-test"
+        description: "all-dates-quiet, all-dates-email, explore, capture, notify-test"
         required: true
         default: "explore"
 
@@ -58,7 +58,9 @@ jobs:
         run: |
           SITE_ARG=""
           if [[ "${{ inputs.site }}" != "all" ]]; then SITE_ARG="--site=${{ inputs.site }}"; fi
-          if [[ "${{ inputs.mode }}" == "all-dates-email" ]]; then
+          if [[ "${{ inputs.mode }}" == "all-dates-quiet" ]]; then
+            node check.js --all-dates --dry-run --silent $SITE_ARG 2>&1 | tee debug-summary.txt
+          elif [[ "${{ inputs.mode }}" == "all-dates-email" ]]; then
             node check.js --all-dates --email-summary --dry-run $SITE_ARG 2>&1 | tee debug-summary.txt
           elif [[ "${{ inputs.mode }}" == "all-dates" ]]; then
             node check.js --all-dates --dry-run $SITE_ARG 2>&1 | tee debug-summary.txt

@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
-const { notify } = require('./notify');
+const { notify: sendNotification } = require('./notify');
 const { advanceToCalendar, readSlots, parseDay, surveyScreen } = require('./flow');
 
 const ROOT = __dirname;
@@ -21,6 +21,18 @@ const TEST_NOTIFY = args.includes('--test-notify');
 const ALL_DATES = args.includes('--all-dates');
 // Email the earliest-per-venue rundown, rather than only printing it.
 const EMAIL_SUMMARY = args.includes('--email-summary');
+// Send nothing at all, whatever else is asked for. Used when the rundown is
+// wanted on screen rather than in an inbox.
+const SILENT = args.includes('--silent');
+
+const notify = async (msg) => {
+  if (SILENT) {
+    console.log(`[silent] would have sent: ${msg.title}`);
+    return;
+  }
+  return sendNotification(msg);
+};
+
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
@@ -278,7 +290,7 @@ async function main() {
 
       if (ALL_DATES) summary.push({ site, venue, slots: result.slots });
 
-      if (added.length && (!firstRun || settings.notifyOnFirstRun)) {
+      if (!ALL_DATES && added.length && (!firstRun || settings.notifyOnFirstRun)) {
         alerts.push({ site, venue, added, firstRun });
       }
     }
@@ -287,7 +299,7 @@ async function main() {
   await browser.close();
   if (!DRY) fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n');
 
-  if (ALL_DATES && EMAIL_SUMMARY) {
+  if (ALL_DATES && EMAIL_SUMMARY && !SILENT) {
     const cutoff = settings.windowEnd;
     const ranked = summary
       .filter((s) => s.slots.length)
