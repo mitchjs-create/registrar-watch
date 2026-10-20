@@ -35,79 +35,80 @@
     "wandsworth::The Town Hall, Wandsworth High Street - The Elizabeth Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-10-20T21:23:30.189Z",
+      "lastRun": "2026-10-20T21:35:28.445Z",
       "lastChange": null,
       "lastAlert": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Victoria Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-10-20T21:23:55.620Z",
+      "lastRun": "2026-10-20T21:35:53.561Z",
       "lastChange": null,
       "lastAlert": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Alexandra Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-10-20T21:24:25.088Z",
+      "lastRun": "2026-10-20T21:36:30.908Z",
       "lastChange": null,
       "lastAlert": null
     },
     "southwark::Southwark District Register Office": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-10-20T21:26:01.723Z",
+      "failures": 2,
+      "lastRun": "2026-10-20T21:37:00.293Z",
       "lastChange": null,
       "lastAlert": "2026-10-09T11:38:42.226Z",
       "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\nCall log:\n  - navigating to \"https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\", waiting until \"domcontentloaded\"\n"
     },
     "southwark::CAMBERWELL HOUSE": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-10-20T21:26:30.232Z",
+      "failures": 1,
+      "lastRun": "2026-10-20T21:37:29.207Z",
       "lastChange": "2026-09-23T23:46:24.742Z",
-      "lastAlert": null
+      "lastAlert": null,
+      "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\nCall log:\n  - navigating to \"https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\", waiting until \"domcontentloaded\"\n"
     },
     "islington::Islington Town Hall - Say I Do With Two": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-10-20T21:26:58.520Z",
+      "lastRun": "2026-10-20T21:38:12.229Z",
       "lastChange": null,
       "lastAlert": null
     },
     "lincolnshire::Boston Registration Office (You Plus Two Ceremony)": {
       "slots": [],
-      "failures": 1,
-      "lastRun": "2026-10-20T21:28:32.345Z",
+      "failures": 0,
+      "lastRun": "2026-10-20T21:39:08.477Z",
       "lastChange": null,
-      "lastAlert": "2026-09-30T17:18:04.343Z",
-      "lastError": "no way forward from this screen"
+      "lastAlert": "2026-09-30T17:18:04.343Z"
     },
     "lincolnshire::Grantham Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-10-20T21:28:57.546Z",
+      "lastRun": "2026-10-20T21:39:39.354Z",
       "lastChange": null,
       "lastAlert": null
     },
     "lincolnshire::Lincoln Register Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-10-20T21:29:22.497Z",
+      "lastRun": "2026-10-20T21:40:08.453Z",
       "lastChange": null,
       "lastAlert": null
     },
     "towerhamlets::Tower Hamlets Register Office": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-10-20T21:30:37.857Z",
+      "failures": 1,
+      "lastRun": "2026-10-20T21:40:38.213Z",
       "lastChange": null,
-      "lastAlert": null
+      "lastAlert": null,
+      "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://registrar.towerhamlets.gov.uk/Agenda/OnlineBookings/appointment.html?pg=d9b8e6dc-a073-42d8-ad2e-608b7295297f\nCall log:\n  - navigating to \"https://registrar.towerhamlets.gov.uk/Agenda/OnlineBookings/appointment.html?pg=d9b8e6dc-a073-42d8-ad2e-608b7295297f\", waiting until \"domcontentloaded\"\n"
     },
     "camden::Camden Register Office": {
       "slots": [],
-      "failures": 8,
-      "lastRun": "2026-10-20T21:31:02.515Z",
+      "failures": 9,
+      "lastRun": "2026-10-20T21:41:06.450Z",
       "lastChange": null,
       "lastAlert": "2026-10-09T11:32:45.954Z",
       "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://camden.sishost.co.uk/Agenda/TelephoneRegistration/Appointment.html?pg=06edd7c1-1597-4311-aeb9-2a7b52ad21db\nCall log:\n  - navigating to \"https://camden.sishost.co.uk/Agenda/TelephoneRegistration/Appointment.html?pg=06edd7c1-1597-4311-aeb9-2a7b52ad21db\", waiting until \"domcontentloaded\"\n"
