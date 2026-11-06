@@ -35,36 +35,36 @@
     "wandsworth::The Town Hall, Wandsworth High Street - The Elizabeth Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-06T19:29:29.530Z",
+      "lastRun": "2026-11-06T19:39:51.361Z",
       "lastChange": null,
       "lastAlert": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Victoria Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-06T19:29:54.664Z",
+      "lastRun": "2026-11-06T19:40:18.479Z",
       "lastChange": null,
       "lastAlert": null
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Alexandra Room": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-06T19:31:22.607Z",
+      "lastRun": "2026-11-06T19:40:55.628Z",
       "lastChange": null,
       "lastAlert": null
     },
     "southwark::Southwark District Register Office": {
       "slots": [],
-      "failures": 14,
-      "lastRun": "2026-11-06T19:31:54.895Z",
+      "failures": 15,
+      "lastRun": "2026-11-06T19:41:24.248Z",
       "lastChange": null,
       "lastAlert": "2026-10-09T11:38:42.226Z",
       "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\nCall log:\n  - navigating to \"https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\", waiting until \"domcontentloaded\"\n"
     },
     "southwark::CAMBERWELL HOUSE": {
       "slots": [],
-      "failures": 15,
-      "lastRun": "2026-11-06T19:32:24.430Z",
+      "failures": 16,
+      "lastRun": "2026-11-06T19:41:53.795Z",
       "lastChange": "2026-09-23T23:46:24.742Z",
       "lastAlert": null,
       "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\nCall log:\n  - navigating to \"https://southwark.sishost.co.uk/Agenda/OnlineBookings/Appointment.html?pg=3c90500a-a812-43db-beac-087929dba9f5\", waiting until \"domcontentloaded\"\n"
@@ -72,42 +72,43 @@
     "islington::Islington Town Hall - Say I Do With Two": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-06T19:32:55.906Z",
+      "lastRun": "2026-11-06T19:42:17.221Z",
       "lastChange": null,
       "lastAlert": null
     },
     "lincolnshire::Boston Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-06T19:33:21.930Z",
+      "lastRun": "2026-11-06T19:42:44.627Z",
       "lastChange": null,
       "lastAlert": "2026-09-30T17:18:04.343Z"
     },
     "lincolnshire::Grantham Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-06T19:33:57.995Z",
+      "lastRun": "2026-11-06T19:43:10.873Z",
       "lastChange": null,
       "lastAlert": null
     },
     "lincolnshire::Lincoln Register Office (You Plus Two Ceremony)": {
       "slots": [],
-      "failures": 0,
-      "lastRun": "2026-11-06T19:34:29.294Z",
+      "failures": 1,
+      "lastRun": "2026-11-06T19:43:46.984Z",
       "lastChange": null,
-      "lastAlert": null
+      "lastAlert": null,
+      "lastError": "no way forward from this screen"
     },
     "towerhamlets::Tower Hamlets Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-06T19:35:01.083Z",
+      "lastRun": "2026-11-06T19:44:19.429Z",
       "lastChange": null,
       "lastAlert": null
     },
     "camden::Camden Register Office": {
       "slots": [],
-      "failures": 5,
-      "lastRun": "2026-11-06T19:35:28.461Z",
+      "failures": 6,
+      "lastRun": "2026-11-06T19:44:50.142Z",
       "lastChange": null,
       "lastAlert": "2026-10-09T11:32:45.954Z",
       "lastError": "page.goto: net::ERR_CONNECTION_REFUSED at https://camden.sishost.co.uk/Agenda/TelephoneRegistration/Appointment.html?pg=06edd7c1-1597-4311-aeb9-2a7b52ad21db\nCall log:\n  - navigating to \"https://camden.sishost.co.uk/Agenda/TelephoneRegistration/Appointment.html?pg=06edd7c1-1597-4311-aeb9-2a7b52ad21db\", waiting until \"domcontentloaded\"\n"
