@@ -34,24 +34,24 @@
   "venues": {
     "wandsworth::The Town Hall, Wandsworth High Street - The Elizabeth Room": {
       "slots": [],
-      "failures": 12,
-      "lastRun": "2026-11-23T21:53:57.862Z",
+      "failures": 13,
+      "lastRun": "2026-11-24T05:04:03.789Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "venue \"The Town Hall, Wandsworth High Street - The Elizabeth Room\" not offered"
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Victoria Room": {
       "slots": [],
-      "failures": 12,
-      "lastRun": "2026-11-23T21:54:23.073Z",
+      "failures": 13,
+      "lastRun": "2026-11-24T05:04:29.084Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "venue \"The Town Hall, Wandsworth High Street - The Victoria Room\" not offered"
     },
     "wandsworth::The Town Hall, Wandsworth High Street - The Alexandra Room": {
       "slots": [],
-      "failures": 12,
-      "lastRun": "2026-11-23T21:54:48.723Z",
+      "failures": 13,
+      "lastRun": "2026-11-24T05:04:54.848Z",
       "lastChange": null,
       "lastAlert": null,
       "lastError": "venue \"The Town Hall, Wandsworth High Street - The Alexandra Room\" not offered"
@@ -59,56 +59,56 @@
     "southwark::Southwark District Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-23T21:55:20.619Z",
+      "lastRun": "2026-11-24T05:05:30.255Z",
       "lastChange": null,
       "lastAlert": "2026-11-06T20:28:38.550Z"
     },
     "southwark::CAMBERWELL HOUSE": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-23T21:55:48.247Z",
+      "lastRun": "2026-11-24T05:05:57.471Z",
       "lastChange": "2026-09-23T23:46:24.742Z",
       "lastAlert": "2026-11-06T20:19:09.801Z"
     },
     "islington::Islington Town Hall - Say I Do With Two": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-23T21:56:10.160Z",
+      "lastRun": "2026-11-24T05:06:19.835Z",
       "lastChange": null,
       "lastAlert": null
     },
     "lincolnshire::Boston Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-23T21:56:40.547Z",
+      "lastRun": "2026-11-24T05:06:47.684Z",
       "lastChange": null,
       "lastAlert": "2026-09-30T17:18:04.343Z"
     },
     "lincolnshire::Grantham Registration Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-23T21:57:06.242Z",
+      "lastRun": "2026-11-24T05:07:15.647Z",
       "lastChange": null,
       "lastAlert": null
     },
     "lincolnshire::Lincoln Register Office (You Plus Two Ceremony)": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-23T21:57:32.426Z",
+      "lastRun": "2026-11-24T05:07:41.582Z",
       "lastChange": null,
       "lastAlert": null
     },
     "towerhamlets::Tower Hamlets Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-23T21:58:06.204Z",
+      "lastRun": "2026-11-24T05:08:15.910Z",
       "lastChange": null,
       "lastAlert": "2026-11-17T08:03:17.696Z"
     },
     "camden::Camden Register Office": {
       "slots": [],
       "failures": 0,
-      "lastRun": "2026-11-23T21:58:41.965Z",
+      "lastRun": "2026-11-24T05:08:53.141Z",
       "lastChange": null,
       "lastAlert": "2026-10-09T11:32:45.954Z"
     }
